@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@200;300;400&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #080705;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  canvas#bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Grain overlay */
+  .grain {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Vignette */
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(4,3,2,0.75) 100%);
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  /* Bottom fog */
+  .fog {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 45%;
+    background: linear-gradient(to top, #080705 0%, rgba(8,7,5,0.7) 40%, transparent 100%);
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  /* Nav */
+  nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 56px;
+    animation: fadeDown 1s 0.2s both;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+  }
+
+  .nav-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+  }
+  .nav-bar {
+    width: 6px;
+    border-radius: 1px 1px 0 0;
+  }
+  .nb1 { height: 14px; background: #4a4540; }
+  .nb2 { height: 22px; background: #8A6E38; }
+  .nb3 { height: 34px; background: #C9A250; }
+  .nav-base { height: 1.5px; width: 25px; background: #C9A250; opacity: 0.6; margin-top: 1px; }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 17px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: #E8E0D0;
+    line-height: 1;
+  }
+  .nav-sub {
+    font-size: 7px;
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+    color: rgba(200,185,160,0.4);
+    margin-top: 4px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 44px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(220,205,185,0.55);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: #C9A250; }
+
+  .nav-cta {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #C9A250;
+    border: 1px solid rgba(201,162,80,0.35);
+    padding: 10px 22px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  .nav-cta:hover { background: rgba(201,162,80,0.1); }
+
+  /* Hero content */
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 56px 80px;
+    animation: fadeUp 1s 0.5s both;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .eyebrow-line {
+    width: 36px; height: 1px;
+    background: #C9A250;
+    opacity: 0.7;
+  }
+  .eyebrow-text {
+    font-size: 9px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: #C9A250;
+    opacity: 0.8;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(44px, 7vw, 84px);
+    line-height: 1.08;
+    color: #EDE4D0;
+    letter-spacing: 0.01em;
+    margin-bottom: 28px;
+    max-width: 680px;
+  }
+  h1 em {
+    font-style: italic;
+    color: #C9A250;
+  }
+
+  .hero-desc {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    line-height: 2;
+    color: rgba(220,205,185,0.45);
+    text-transform: uppercase;
+    max-width: 360px;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .btn-primary {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #080705;
+    background: #C9A250;
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-ghost {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(220,205,185,0.5);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s;
+  }
+  .btn-ghost:hover { color: #C9A250; }
+  .btn-arrow { font-size: 13px; }
+
+  /* Verticals strip */
+  .verticals {
+    position: absolute;
+    bottom: 36px; right: 56px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    animation: fadeUp 1s 0.8s both;
+  }
+  .v-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .v-dot {
+    width: 3px; height: 3px; border-radius: 50%;
+    background: #C9A250; opacity: 0.6;
+  }
+  .v-label {
+    font-size: 8px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(200,180,145,0.4);
+  }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px; left: 56px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 1s 1s both;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(201,162,80,0.6), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  .scroll-txt {
+    font-size: 7px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(200,180,145,0.35);
+    writing-mode: vertical-rl;
+    margin-top: 4px;
+  }
+
+  @keyframes fadeDown { from { opacity:0; transform:translateY(-16px); } to { opacity:1; transform:none; } }
+  @keyframes fadeUp   { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+  @keyframes scrollPulse {
+    0%,100% { opacity:1; transform:scaleY(1); }
+    50% { opacity:0.4; transform:scaleY(0.6); }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <canvas id="bg"></canvas>
+  <div class="grain"></div>
+  <div class="vignette"></div>
+  <div class="fog"></div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">
+      <div>
+        <div class="nav-bars">
+          <div class="nav-bar nb1"></div>
+          <div class="nav-bar nb2"></div>
+          <div class="nav-bar nb3"></div>
+        </div>
+        <div class="nav-base"></div>
+      </div>
+      <div>
+        <div class="nav-name">Jagmal</div>
+        <div class="nav-sub">Group</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Verticals</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Careers</a></li>
+    </ul>
+    <a href="#" class="nav-cta">Get in touch</a>
+  </nav>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <div class="eyebrow">
+      <div class="eyebrow-line"></div>
+      <div class="eyebrow-text">Est. Mumbai · India</div>
+    </div>
+    <h1>Building what<br><em>endures.</em></h1>
+    <p class="hero-desc">A multi-sector conglomerate crafting<br>legacy across hospitality, logistics<br>and construction.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Explore Our Work</a>
+      <a href="#" class="btn-ghost">Our Story <span class="btn-arrow">→</span></a>
+    </div>
+  </div>
+
+  <!-- Verticals -->
+  <div class="verticals">
+    <div class="v-item"><span class="v-label">Hospitality</span><div class="v-dot"></div></div>
+    <div class="v-item"><span class="v-label">Logistics</span><div class="v-dot"></div></div>
+    <div class="v-item"><span class="v-label">Construction</span><div class="v-dot"></div></div>
+  </div>
+
+  <!-- Scroll -->
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <div class="scroll-txt">Scroll</div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+resize();
+window.addEventListener('resize', () => { resize(); });
+
+const W = () => canvas.width;
+const H = () => canvas.height;
+
+const buildings = [
+  { x:.01, w:.04, h:.28, floors:7,  lit:.3  },
+  { x:.05, w:.03, h:.18, floors:5,  lit:.25 },
+  { x:.07, w:.05, h:.42, floors:10, lit:.35 },
+  { x:.12, w:.03, h:.22, floors:6,  lit:.2  },
+  { x:.15, w:.06, h:.55, floors:13, lit:.4  },
+  { x:.20, w:.02, h:.15, floors:4,  lit:.15 },
+  { x:.22, w:.04, h:.35, floors:9,  lit:.3  },
+  { x:.27, w:.05, h:.50, floors:12, lit:.45 },
+  { x:.31, w:.03, h:.30, floors:8,  lit:.25 },
+  { x:.34, w:.07, h:.70, floors:18, lit:.5  },
+  { x:.40, w:.03, h:.45, floors:11, lit:.35 },
+  { x:.43, w:.06, h:.62, floors:15, lit:.55 },
+  { x:.48, w:.02, h:.25, floors:6,  lit:.2  },
+  { x:.50, w:.05, h:.80, floors:20, lit:.6  },
+  { x:.55, w:.03, h:.55, floors:13, lit:.4  },
+  { x:.57, w:.04, h:.40, floors:10, lit:.3  },
+  { x:.61, w:.06, h:.58, floors:14, lit:.45 },
+  { x:.66, w:.03, h:.32, floors:8,  lit:.25 },
+  { x:.69, w:.04, h:.48, floors:12, lit:.4  },
+  { x:.73, w:.02, h:.20, floors:5,  lit:.15 },
+  { x:.75, w:.05, h:.60, floors:15, lit:.5  },
+  { x:.79, w:.03, h:.35, floors:9,  lit:.3  },
+  { x:.82, w:.06, h:.45, floors:11, lit:.35 },
+  { x:.87, w:.03, h:.22, floors:6,  lit:.2  },
+  { x:.90, w:.04, h:.38, floors:10, lit:.28 },
+  { x:.94, w:.02, h:.16, floors:4,  lit:.15 },
+  { x:.96, w:.04, h:.30, floors:7,  lit:.22 },
+];
+
+function seededRandom(seed) {
+  let s = seed;
+  return function() {
+    s = (s * 9301 + 49297) % 233280;
+    return s / 233280;
+  };
+}
+
+const winStates = buildings.map((b, bi) => {
+  const rng = seededRandom(bi * 137 + 42);
+  const cols = Math.max(2, Math.floor(b.w * window.innerWidth / 12));
+  return Array.from({length: b.floors * cols}, () => rng() < b.lit ? 1 : 0);
+});
+
+const particles = Array.from({length:80}, () => ({
+  x: Math.random(),
+  y: Math.random(),
+  r: Math.random() * 1.2 + 0.2,
+  speed: Math.random() * 0.00008 + 0.00003,
+  opacity: Math.random() * 0.18 + 0.04,
+  phase: Math.random() * Math.PI * 2,
+}));
+
+const shafts = [
+  { x1:.34, x2:.28, op:.04  },
+  { x1:.50, x2:.44, op:.055 },
+  { x1:.62, x2:.56, op:.035 },
+];
+
+let t = 0;
+
+function draw() {
+  const w = W(), h = H();
+  ctx.clearRect(0,0,w,h);
+
+  ctx.fillStyle = '#080705';
+  ctx.fillRect(0,0,w,h);
+
+  const grd = ctx.createLinearGradient(0, h*0.35, 0, h*0.68);
+  grd.addColorStop(0, 'rgba(201,130,40,0.0)');
+  grd.addColorStop(0.5, 'rgba(201,130,40,0.025)');
+  grd.addColorStop(1, 'rgba(8,7,5,0)');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0,0,w,h);
+
+  shafts.forEach(s => {
+    const grad = ctx.createLinearGradient(s.x1*w, 0, s.x2*w, h);
+    grad.addColorStop(0, `rgba(201,162,80,${s.op})`);
+    grad.addColorStop(0.5, `rgba(201,162,80,${s.op*0.6})`);
+    grad.addColorStop(1, 'rgba(201,162,80,0)');
+    ctx.save();
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 40;
+    ctx.globalAlpha = 0.6 + 0.4 * Math.sin(t * 0.4 + s.x1 * 10);
+    ctx.beginPath();
+    ctx.moveTo(s.x1*w, 0); ctx.lineTo(s.x2*w, h);
+    ctx.stroke();
+    ctx.restore();
+  });
+
+  const groundY = h * 0.68;
+
+  ctx.strokeStyle = 'rgba(120,95,55,0.025)';
+  ctx.lineWidth = 0.5;
+  for (let gx = 0; gx < w; gx += 60) {
+    ctx.beginPath();
+    ctx.moveTo(gx, groundY); ctx.lineTo(gx + w*0.2, 0);
+    ctx.stroke();
+  }
+
+  const sorted = [...buildings].sort((a,b) => a.h - b.h);
+
+  sorted.forEach((b) => {
+    const bi = buildings.indexOf(b);
+    const bx = b.x * w;
+    const bw = Math.max(b.w * w, 18);
+    const bh = b.h * h * 0.65;
+    const by = groundY - bh;
+
+    const fillA = 0.12 + b.h * 0.08;
+    ctx.fillStyle = `rgba(40,32,20,${fillA})`;
+    ctx.fillRect(bx, by, bw, bh);
+
+    ctx.strokeStyle = `rgba(120,95,55,${0.04 + b.h*0.06})`;
+    ctx.lineWidth = 0.5;
+    ctx.strokeRect(bx, by, bw, bh);
+
+    if (b.h > 0.55) {
+      const spireH = bh * 0.08;
+      const spireX = bx + bw/2;
+      ctx.strokeStyle = `rgba(180,145,70,${0.25 + b.h*0.15})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(spireX, by);
+      ctx.lineTo(spireX, by - spireH);
+      ctx.stroke();
+      const blinkPh = (t * 0.8 + bi * 1.7) % (Math.PI*2);
+      const blinkA = blinkPh < Math.PI ? 0 : (Math.sin(blinkPh) * 0.5 + 0.5) * 0.6;
+      ctx.fillStyle = `rgba(255,80,80,${blinkA})`;
+      ctx.beginPath();
+      ctx.arc(spireX, by - spireH - 2, 1.5, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    const cols = Math.max(2, Math.floor(bw / 9));
+    const rows = b.floors;
+    const winW = Math.max(2, (bw - 6) / cols - 2);
+    const winH = Math.max(2, (bh * 0.9) / rows - 3);
+    const padX = (bw - cols*(winW+2) + 2) / 2;
+
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const idx = row * cols + col;
+        const lit = (winStates[bi] && winStates[bi][idx % winStates[bi].length]) ? 1 : 0;
+        if (!lit) continue;
+        const wx = bx + padX + col*(winW+2);
+        const wy = by + bh*0.05 + row*(winH+3);
+        const warmness = 0.3 + Math.random() * 0.4;
+        ctx.fillStyle = `rgba(255,${Math.floor(190+warmness*40)},${Math.floor(80+warmness*40)},${0.12 + warmness*0.2})`;
+        ctx.fillRect(wx, wy, winW, winH);
+      }
+    }
+  });
+
+  const groundGrd = ctx.createLinearGradient(0, groundY-20, 0, groundY+40);
+  groundGrd.addColorStop(0, 'rgba(201,130,50,0.0)');
+  groundGrd.addColorStop(0.4, 'rgba(201,130,50,0.04)');
+  groundGrd.addColorStop(1, 'rgba(8,7,5,0)');
+  ctx.fillStyle = groundGrd;
+  ctx.fillRect(0, groundY-20, w, 60);
+
+  ctx.strokeStyle = 'rgba(180,140,70,0.08)';
+  ctx.lineWidth = 0.5;
+  ctx.beginPath(); ctx.moveTo(0, groundY); ctx.lineTo(w, groundY); ctx.stroke();
+
+  particles.forEach(p => {
+    const px = ((p.x + t * p.speed * 0.5) % 1) * w;
+    const py = ((p.y - t * p.speed) % 1) * h;
+    const pulse = 0.5 + 0.5 * Math.sin(t * 1.5 + p.phase);
+    ctx.fillStyle = `rgba(201,162,80,${p.opacity * pulse})`;
+    ctx.beginPath();
+    ctx.arc(px, py < 0 ? py + h : py, p.r, 0, Math.PI*2);
+    ctx.fill();
+  });
+
+  t += 0.016;
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+</body>
+</html>
+</feedback>Environment details:
+
+# VSCode Visible Files
+TODO.md
+
+# VSCode Open Tabs
+App.css
+components/ui/button.jsx
+components/ui/card.jsx
+components/ui/sheet.jsx
+components/ui/input.jsx
+components/ui/textarea.jsx
+components/ui/label.jsx
+lib/utils.js
+components/ui/sonner.jsx
+vite.config.js
+tailwind.config.js
+postcss.config.js
+index.html
+Hotels.jsx
+App.jsx
+Navbar.jsx
+components/Footer.jsx
+Logistics.jsx
+Precast.jsx
+About.jsx
+Hospitality.jsx
+Contact.jsx
+Leadership.jsx
+package.json
+src/main.jsx
+Index.css
+components/CanvasSkyline.jsx
+TODO.md
+Home.jsx
+
+# Actively Running Terminals
+## Original command: `npm run dev` 
+## New Output
+
+
+7:04:07 pm [vite] (client) hmr update /Home.jsx, /Index.css (x4) 
+
+</xai:function_call name="create_file">
+<parameter name="absolute_path">c:/Users/hp/Desktop/FRR/skyline-hero.html
