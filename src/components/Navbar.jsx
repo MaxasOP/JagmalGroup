@@ -50,7 +50,7 @@ export const Navbar = () => {
           <div className="flex h-16 items-center justify-between sm:h-20">
             <Link
               to="/"
-              className="whitespace-nowrap text-xl font-bold leading-none tracking-tight sm:text-2xl md:text-3xl"
+              className="whitespace-nowrap text-[1.35rem] font-bold leading-none tracking-tight sm:text-2xl md:text-3xl"
               style={{ fontFamily: 'Playfair Display, serif' }}
               data-testid="navbar-logo"
             >
