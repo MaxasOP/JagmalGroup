@@ -65,7 +65,7 @@ const Home = () => {
               style={{ fontFamily: 'Manrope, sans-serif' }}
               data-testid="hero-subheadline"
             >
-              A multi-sector conglomerate crafting legacy across hospitality, logistics and construction.
+              Delivering value across hospitality, infrastructure and logistics .
             </p>
 
             <Button
