@@ -45,13 +45,23 @@ const Philanthropy = () => {
                 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight"
                 style={{ fontFamily: 'Playfair Display, serif' }}
               >
-                Arail Tent City
+                Arail Tent City Kumbh Cottage
               </h2>
               <p
                 className="text-lg text-slate-300 leading-relaxed mb-6"
                 style={{ fontFamily: 'Manrope, sans-serif' }}
               >
-                During Mahakumbh 2025, Jagmal Group established the Arail Tent City — a temporary cottage village of 750 units that provided shelter, meals, sanitation and first-aid support to over 80,000 pilgrims. The initiative was coordinated with local authorities and volunteers to deliver safe, dignified accommodation and essential services at scale.
+                In an unprecedented feat of determination, we constructed the world's largest temporary tent city of 750 cottages from scratch in just 15 days.
+              </p>              <p
+                className="text-lg text-slate-300 leading-relaxed mb-6"
+                style={{ fontFamily: 'Manrope, sans-serif' }}
+              >
+                Strategically situated just 5 kilometers from Sangam, the tent city provided convenient access to the sacred confluence while maintaining a peaceful, organized environment for pilgrims.
+              </p>              <p
+                className="text-lg text-slate-300 leading-relaxed mb-6"
+                style={{ fontFamily: 'Manrope, sans-serif' }}
+              >
+                During Mahakumbh 2025, Jagmal Group established the Arail Tent City Kumbh Cottage — a temporary tent city of 750 cottages that provided shelter, meals, sanitation and first-aid support to over 80,000 pilgrims. The initiative was coordinated with local authorities and volunteers to deliver safe, dignified accommodation and essential services at scale.
               </p>
               <p
                 className="text-lg text-slate-300 leading-relaxed mb-6"
@@ -79,9 +89,15 @@ const Philanthropy = () => {
               </ul>
             </div>
             <div className="relative">
-              <div className="grid grid-cols-2 gap-4">
-                <img src="/images/Arail.jpeg" alt="Arail Tent City 1" className="rounded-xl w-full h-56 object-cover shadow-xl" />
-                <img src="/images/ArailT.jpeg" alt="Arail Tent City 2" className="rounded-xl w-full h-56 object-cover shadow-xl" />
+              <div className="space-y-4">
+                <div>
+                  <img src="/images/kumbh.webp" alt="Mahakumbh 2025 - Largest Human Gathering" className="rounded-xl w-full h-64 object-cover shadow-xl" />
+                  <p className="text-sm text-[#d4af37] mt-3 text-center font-medium uppercase tracking-wide">Mahakumbh 2025 — The Largest Human Gathering on Earth</p>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <img src="/images/Arail.jpeg" alt="Arail Tent City Kumbh Cottage 1" className="rounded-xl w-full h-56 object-cover shadow-xl" />
+                  <img src="/images/ArailT.jpeg" alt="Arail Tent City Kumbh Cottage 2" className="rounded-xl w-full h-56 object-cover shadow-xl" />
+                </div>
               </div>
             </div>
           </div>
