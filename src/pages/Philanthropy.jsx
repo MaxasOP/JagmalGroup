@@ -51,7 +51,7 @@ const Philanthropy = () => {
                 className="text-lg text-slate-300 leading-relaxed mb-6"
                 style={{ fontFamily: 'Manrope, sans-serif' }}
               >
-                During Mahakumbh 2025, Jagmal Group established the Arail Tent City — a temporary cottage village of 750 units that provided shelter, meals, sanitation and first-aid support to over 5,000 pilgrims. The initiative was coordinated with local authorities and volunteers to deliver safe, dignified accommodation and essential services at scale.
+                During Mahakumbh 2025, Jagmal Group established the Arail Tent City — a temporary cottage village of 750 units that provided shelter, meals, sanitation and first-aid support to over 80,000 pilgrims. The initiative was coordinated with local authorities and volunteers to deliver safe, dignified accommodation and essential services at scale.
               </p>
               <p
                 className="text-lg text-slate-300 leading-relaxed mb-6"
