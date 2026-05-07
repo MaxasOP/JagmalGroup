@@ -208,6 +208,73 @@ const About = () => {
           </div>
         </div>
       </section>
+      {/* Philanthropy Section */}
+      <section className="py-20 md:py-24 bg-slate-950" data-testid="philanthropy-section">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.3em] text-[#d4af37] mb-4 font-medium">Philanthropy</p>
+              <h2
+                className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
+                Arail Tent City — Mahakumbh 2025
+              </h2>
+              <p
+                className="text-lg text-slate-300 leading-relaxed mb-4"
+                style={{ fontFamily: 'Manrope, sans-serif' }}
+              >
+                During Mahakumbh 2025, Jagmal Group established the Arail Tent City — a temporary cottage village of 750 units that provided shelter, meals, sanitation and first-aid support to over 5,000 pilgrims. The initiative was coordinated with local authorities and volunteers to deliver safe, dignified accommodation and essential services at scale.
+              </p>
+              <p
+                className="text-lg text-slate-300 leading-relaxed"
+                style={{ fontFamily: 'Manrope, sans-serif' }}
+              >
+                This effort reflects the Group's commitment to community wellbeing and emergency support, mobilizing resources quickly to assist large public gatherings and vulnerable populations.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-3">
+                <img src="/images/Arail.jpeg" alt="Arail Tent City 1" className="rounded-xl w-full h-48 object-cover" />
+                <img src="/images/ArailT.jpeg" alt="Arail Tent City 2" className="rounded-xl w-full h-48 object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section className="py-12 md:py-16 bg-slate-900" data-testid="partners-section">
+        <div className="container mx-auto px-4 md:px-8 max-w-5xl">
+          <div className="text-center mb-8">
+            <h3 className="text-sm uppercase tracking-[0.3em] text-[#d4af37] mb-2 font-medium">Collaborations</h3>
+            <h2 className="text-3xl md:text-4xl font-semibold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>Our Partners</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-4">
+            <div className="p-6 rounded-lg bg-slate-800 border border-slate-700 text-center flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-full bg-[#d4af37]/10 flex items-center justify-center text-[#d4af37] font-semibold">SBI</div>
+              <p className="text-sm text-[#d4af37] uppercase mb-0">Lending Partner</p>
+              <p className="text-white font-medium">State Bank of India</p>
+            </div>
+            <div className="p-6 rounded-lg bg-slate-800 border border-slate-700 text-center flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-full bg-[#d4af37]/10 flex items-center justify-center text-[#d4af37] font-semibold">HVS</div>
+              <p className="text-sm text-[#d4af37] uppercase mb-0">Hospitality Partner</p>
+              <p className="text-white font-medium">HVS</p>
+            </div>
+            <div className="p-6 rounded-lg bg-slate-800 border border-slate-700 text-center flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-full bg-[#d4af37]/10 flex items-center justify-center text-[#d4af37] font-semibold">AN</div>
+              <p className="text-sm text-[#d4af37] uppercase mb-0">Property Consultant</p>
+              <p className="text-white font-medium">Anarock</p>
+            </div>
+            <div className="p-6 rounded-lg bg-slate-800 border border-slate-700 text-center flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-full bg-[#d4af37]/10 flex items-center justify-center text-[#d4af37] font-semibold">IC</div>
+              <p className="text-sm text-[#d4af37] uppercase mb-0">Architectural Consultant</p>
+              <p className="text-white font-medium">Incubis Consultants</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
