@@ -8,7 +8,7 @@ const hotels = [
       name: 'Ginger Prayagraj',
       rooms: 100,
       status: 'Upcoming',
-      description: 'A contemporary smart hotel designed for the modern traveler, offering comfort and convenience,UP',
+      description: 'A contemporary smart hotel designed for the modern traveler, offering comfort and convenience.',
       location: 'Prayagraj',
       features: ['Modern Amenities', 'Smart Rooms', 'Business Center', 'Restaurant & Cafe'],
       image: '/images/Ginger.jpg',
