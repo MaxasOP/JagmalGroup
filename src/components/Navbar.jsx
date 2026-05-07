@@ -113,7 +113,7 @@ export const Navbar = () => {
                 className="text-slate-100 hover:text-amber-500 p-2"
                 data-testid="mobile-menu-trigger"
               >
-                {mobileOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+                {mobileOpen ? <X className="h-10 w-10" /> : <Menu className="h-10 w-10" />}
               </Button>
             </div>
           </div>
