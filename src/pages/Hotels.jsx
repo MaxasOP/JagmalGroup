@@ -9,6 +9,7 @@ const hotels = [
       rooms: 100,
       status: 'Upcoming',
       description: 'A contemporary smart hotel designed for the modern traveler, offering comfort and convenience,UP',
+      location: 'Prayagraj',
       features: ['Modern Amenities', 'Smart Rooms', 'Business Center', 'Restaurant & Cafe'],
       image: '/images/Ginger.jpg',
     },
@@ -17,8 +18,19 @@ const hotels = [
       rooms: 57,
       status: 'Upcoming',
       description: 'An upscale resort offering premium experiences and world-class facilities.',
+      location: 'Prayagraj',
       features: ['Luxury Suites', 'Swimming Pool', 'Spa & Wellness', 'Fine Dining'],
       image: '/images/imageshero1.png',
+    },
+    {
+      name: 'Indian Culture Hostels',
+      rooms: null,
+      status: 'Available',
+      description:
+        'A cozy, budget-friendly hostel in Tapovan, Rishikesh near the Ganges and Laxman Jhula, popular with yoga enthusiasts and backpackers. Offers a friendly, community atmosphere with a rooftop common area and easy access to riverfront activities and yoga centers.',
+      features: ['Backpacker Friendly', 'Rooftop Views', 'Yoga-Friendly', 'River Access'],
+      image: '/images/Indian.jpg',
+      location: 'Tapovan, Rishikesh',
     },
   ];
 
@@ -102,13 +114,15 @@ const hotels = [
                     {hotel.name}
                   </h3>
                   <div className="flex items-center space-x-6 mb-6 text-slate-400">
-                    <div className="flex items-center">
-                      <BedDouble className="h-5 w-5 mr-2 text-[#d4af37]" />
-                      <span className="text-sm font-medium">{hotel.rooms} Rooms</span>
-                    </div>
+                    {hotel.rooms ? (
+                      <div className="flex items-center">
+                        <BedDouble className="h-5 w-5 mr-2 text-[#d4af37]" />
+                        <span className="text-sm font-medium">{hotel.rooms} Rooms</span>
+                      </div>
+                    ) : null}
                     <div className="flex items-center">
                       <MapPin className="h-5 w-5 mr-2 text-[#d4af37]" />
-                      <span className="text-sm font-medium">Prayagraj</span>
+                      <span className="text-sm font-medium">{hotel.location}</span>
                     </div>
                   </div>
                   <p
