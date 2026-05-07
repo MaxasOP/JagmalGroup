@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar';
 import { Toaster } from './components/ui/sonner';
 import Home from './pages/Home';
 import About from './pages/About';
+import Philanthropy from './pages/Philanthropy';
 import Hotels from './pages/Hotels';
 import Logistics from './pages/Logistics';
 import Hospitality from './pages/Hospitality';
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/philanthropy" element={<Philanthropy />} />
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/logistics" element={<Logistics />} />
           <Route path="/hospitality" element={<Hospitality />} />

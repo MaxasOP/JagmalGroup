@@ -25,7 +25,7 @@ export const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
-    { name: 'Philanthropy', path: '/about#philanthropy' },
+    { name: 'Philanthropy', path: '/philanthropy' },
     { name: 'Leadership', path: '/leadership' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -182,7 +182,7 @@ export const Navbar = () => {
               
               {/* Philanthropy */}
               <Link
-                to="/about#philanthropy"
+                to="/philanthropy"
                 onClick={() => setMobileOpen(false)}
                 className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
               >

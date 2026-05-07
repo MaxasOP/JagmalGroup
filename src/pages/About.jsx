@@ -208,40 +208,6 @@ const About = () => {
           </div>
         </div>
       </section>
-      {/* Philanthropy Section */}
-      <section id="philanthropy" className="py-20 md:py-24 bg-slate-950" data-testid="philanthropy-section">
-        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-[#d4af37] mb-4 font-medium">Philanthropy</p>
-              <h2
-                className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight"
-                style={{ fontFamily: 'Playfair Display, serif' }}
-              >
-                Arail Tent City — Mahakumbh 2025
-              </h2>
-              <p
-                className="text-lg text-slate-300 leading-relaxed mb-4"
-                style={{ fontFamily: 'Manrope, sans-serif' }}
-              >
-                During Mahakumbh 2025, Jagmal Group established the Arail Tent City — a temporary cottage village of 750 units that provided shelter, meals, sanitation and first-aid support to over 5,000 pilgrims. The initiative was coordinated with local authorities and volunteers to deliver safe, dignified accommodation and essential services at scale.
-              </p>
-              <p
-                className="text-lg text-slate-300 leading-relaxed"
-                style={{ fontFamily: 'Manrope, sans-serif' }}
-              >
-                This effort reflects the Group's commitment to community wellbeing and emergency support, mobilizing resources quickly to assist large public gatherings and vulnerable populations.
-              </p>
-            </div>
-            <div className="relative">
-              <div className="grid grid-cols-2 gap-3">
-                <img src="/images/Arail.jpeg" alt="Arail Tent City 1" className="rounded-xl w-full h-48 object-cover" />
-                <img src="/images/ArailT.jpeg" alt="Arail Tent City 2" className="rounded-xl w-full h-48 object-cover" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Partners Section */}
       <section className="py-12 md:py-16 bg-slate-900" data-testid="partners-section">
