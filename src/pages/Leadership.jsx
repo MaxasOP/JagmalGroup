@@ -60,19 +60,13 @@ const Leadership = () => {
                   Shivam Chauhan
                 </h2>
                 <div className="inline-block px-6 py-2 rounded-full bg-[#d4af37]/10 text-[#d4af37] text-sm font-medium mb-8">
-                  Director
+                  Chairman & Managing Director
                 </div>
                 <p
                   className="text-lg text-slate-300 leading-relaxed max-w-2xl mb-8"
                   style={{ fontFamily: 'Manrope, sans-serif' }}
                 >
-Mr. Chauhan serves as Director of Jagmal Group,
-                </p>
-                <p
-                  className="text-lg text-slate-300 leading-relaxed max-w-2xl mb-8"
-                  style={{ fontFamily: 'Manrope, sans-serif' }}
-                >
-                  With a keen eye for emerging opportunities and a dedication to sustainable business practices,Mr. Chauhan leads the team in building a diversified portfolio that creates lasting value for stakeholders and communities alike.
+                  Mr. Chauhan, a graduate of Mithibai College and a UC Irvine dropout, serves as Chairman and MD of Jagmal Group. With a keen eye for emerging opportunities and a dedication to sustainable business practices, he leads the team in building a diversified portfolio that creates lasting value for stakeholders and communities alike.
                 </p>
                 <div className="flex items-center space-x-4">
                   <a
