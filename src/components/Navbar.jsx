@@ -25,6 +25,7 @@ export const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
+    { name: 'Philanthropy', path: '/about#philanthropy' },
     { name: 'Leadership', path: '/leadership' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -109,10 +110,10 @@ export const Navbar = () => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="text-slate-100 hover:text-amber-500"
+                className="text-slate-100 hover:text-amber-500 p-2"
                 data-testid="mobile-menu-trigger"
               >
-                {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {mobileOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
               </Button>
             </div>
           </div>
@@ -177,6 +178,15 @@ export const Navbar = () => {
                 className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
               >
                 Leadership
+              </Link>
+              
+              {/* Philanthropy */}
+              <Link
+                to="/about#philanthropy"
+                onClick={() => setMobileOpen(false)}
+                className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
+              >
+                Philanthropy
               </Link>
               
               {/* Contact */}

@@ -209,7 +209,7 @@ const About = () => {
         </div>
       </section>
       {/* Philanthropy Section */}
-      <section className="py-20 md:py-24 bg-slate-950" data-testid="philanthropy-section">
+      <section id="philanthropy" className="py-20 md:py-24 bg-slate-950" data-testid="philanthropy-section">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
