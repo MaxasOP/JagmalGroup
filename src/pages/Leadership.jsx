@@ -1,5 +1,5 @@
 import { Card } from '../components/ui/card';
-import { Linkedin, Mail } from 'lucide-react';
+import { Linkedin, Mail, Instagram } from 'lucide-react';
 import Footer from '../components/Footer';
 
 const Leadership = () => {
@@ -70,18 +70,29 @@ const Leadership = () => {
                 </p>
                 <div className="flex items-center space-x-4">
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/shivam-chauhan-880a98198?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 rounded-full bg-slate-800 hover:bg-[#d4af37]/10 transition-colors duration-300"
                     data-testid="linkedin-link"
                   >
                     <Linkedin className="h-5 w-5 text-slate-300" />
                   </a>
                   <a
-                    href="#"
+                    href="mailto:Chauhanshivam.pc@gmail.com"
                     className="p-3 rounded-full bg-slate-800 hover:bg-[#d4af37]/10 transition-colors duration-300"
                     data-testid="email-link"
                   >
                     <Mail className="h-5 w-5 text-slate-300" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/shivaaaamchauhan?igsh=MTBubnE1NnYyaHJ0Zg=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-full bg-slate-800 hover:bg-[#d4af37]/10 transition-colors duration-300"
+                    data-testid="instagram-link"
+                  >
+                    <Instagram className="h-5 w-5 text-slate-300" />
                   </a>
                 </div>
               </div>
