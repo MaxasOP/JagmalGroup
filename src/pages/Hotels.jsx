@@ -5,20 +5,20 @@ import Footer from '../components/Footer';
 const Hotels = () => {
 const hotels = [
     {
-      name: 'Ginger Prayagraj',
+      name: 'Hotel Ginger',
       rooms: 100,
       status: 'Upcoming',
       description: 'A contemporary smart hotel designed for the modern traveler, offering comfort and convenience.',
-      location: 'Prayagraj',
+      location: 'UP',
       features: ['Modern Amenities', 'Smart Rooms', 'Business Center', 'Restaurant & Cafe'],
       image: '/images/Ginger.jpg',
     },
     {
-      name: 'Sterling Prayagraj',
+      name: 'Sterling Hotel',
       rooms: 57,
       status: 'Upcoming',
       description: 'An upscale resort offering premium experiences and world-class facilities.',
-      location: 'Prayagraj',
+      location: 'UP',
       features: ['Luxury Suites', 'Swimming Pool', 'Spa & Wellness', 'Fine Dining'],
       image: '/images/imageshero1.png',
     },
@@ -83,7 +83,7 @@ const hotels = [
               className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto"
               style={{ fontFamily: 'Manrope, sans-serif' }}
             >
-              Discover our upcoming properties in Prayagraj, designed to offer exceptional experiences for every traveler.
+              Discover our upcoming properties, designed to offer exceptional experiences for every traveler.
             </p>
           </div>
 
