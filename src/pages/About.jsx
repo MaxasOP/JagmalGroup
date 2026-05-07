@@ -60,6 +60,64 @@ const About = () => {
         </div>
       </section>
 
+      {/* Founder Spotlight */}
+      <section className="py-20 md:py-24 bg-slate-900" data-testid="founder-section">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.3em] text-[#d4af37] mb-4 font-medium">
+                Founder Legacy
+              </p>
+              <h2
+                className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+                data-testid="founder-heading"
+              >
+                Jagmal Raja Chauhan
+              </h2>
+              <a
+                href="https://en.wikipedia.org/wiki/Jagmal_Raja_Chauhan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-sm font-medium text-[#d4af37] hover:text-[#f0c75e] transition-colors duration-300 mb-6"
+              >
+                View Wikipedia profile
+              </a>
+              <p
+                className="text-lg text-slate-300 leading-relaxed mb-6"
+                style={{ fontFamily: 'Manrope, sans-serif' }}
+              >
+                Jagmal Raja Chauhan, born in 1887 in Nagher, Kutch, is the founding figure behind the legacy that became Jagmal Group. He began working in railway contracting at an early age and went on to build a reputation as a railway contractor, industrialist, engineer, and philanthropist.
+              </p>
+              <p
+                className="text-lg text-slate-300 leading-relaxed"
+                style={{ fontFamily: 'Manrope, sans-serif' }}
+              >
+                From railways and bridges to glass, mining, aviation, and public welfare, his work established the entrepreneurial foundation and values that continue to shape the group today.
+              </p>
+            </div>
+            <Card className="p-8 md:p-10 border border-slate-800 rounded-xl bg-slate-950 shadow-2xl">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-5 rounded-lg bg-slate-900 border border-slate-800">
+                  <p className="text-sm text-[#d4af37] uppercase tracking-wider mb-2">Born</p>
+                  <p className="text-white text-lg font-medium">1887, Nagher, Kutch</p>
+                </div>
+                <div className="p-5 rounded-lg bg-slate-900 border border-slate-800">
+                  <p className="text-sm text-[#d4af37] uppercase tracking-wider mb-2">Known For</p>
+                  <p className="text-white text-lg font-medium">Railways, industry, philanthropy</p>
+                </div>
+                <div className="p-5 rounded-lg bg-slate-900 border border-slate-800 sm:col-span-2">
+                  <p className="text-sm text-[#d4af37] uppercase tracking-wider mb-2">Legacy</p>
+                  <p className="text-slate-300 leading-relaxed">
+                    He helped establish a broad base of enterprise and civic contribution that still informs the group’s identity and ambition.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Vision Section */}
       <section className="py-20 md:py-32 bg-slate-950" data-testid="vision-section">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
@@ -82,7 +140,7 @@ const About = () => {
                 className="text-lg text-slate-300 leading-relaxed"
                 style={{ fontFamily: 'Manrope, sans-serif' }}
               >
-                We envision a future where Jagmal Group is synonymous with quality, trust, and excellence, setting industry benchmarks and contributing meaningfully to the communities we serve.
+                We envision a future where Jagmal Group is synonymous with quality, trust, and excellence, building on the foundation laid by Jagmal Raja Chauhan and contributing meaningfully to the communities we serve.
               </p>
             </div>
             <div className="relative">
