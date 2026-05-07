@@ -110,10 +110,14 @@ export const Navbar = () => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="text-slate-100 hover:text-amber-500 p-5"
+                className="text-slate-100 hover:text-amber-500 p-2 transition-colors"
                 data-testid="mobile-menu-trigger"
               >
-                {mobileOpen ? <X className="h-12 w-12" /> : <Menu className="h-12 w-12" />}
+                {mobileOpen ? (
+                  <X className="h-7 w-7" strokeWidth={2.5} />
+                ) : (
+                  <Menu className="h-7 w-7" strokeWidth={2.5} />
+                )}
               </Button>
             </div>
           </div>
