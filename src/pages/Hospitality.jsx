@@ -1,8 +1,39 @@
 import { Card } from '../components/ui/card';
-import { Coffee, MapPin, Clock, Sparkles } from 'lucide-react';
+import { MapPin, BedDouble, Users, Sparkles } from 'lucide-react';
 import Footer from '../components/Footer';
 
 const Hospitality = () => {
+const hotels = [
+    {
+      name: 'Hotel Ginger',
+      rooms: 100,
+      status: 'Upcoming',
+      description: 'A contemporary smart hotel designed for the modern traveler, offering comfort and convenience.',
+      location: 'UP',
+      features: ['Modern Amenities', 'Smart Rooms', 'Business Center', 'Restaurant & Cafe'],
+      image: '/images/Ginger.jpg',
+    },
+    {
+      name: 'Sterling Hotel',
+      rooms: 57,
+      status: 'Upcoming',
+      description: 'An upscale resort offering premium experiences and world-class facilities.',
+      location: 'UP',
+      features: ['Luxury Suites', 'Swimming Pool', 'Spa & Wellness', 'Fine Dining'],
+      image: '/images/Sterling2.png',
+    },
+    {
+      name: 'Indian Culture Hostels',
+      rooms: null,
+      status: 'Available',
+      description:
+        'A cozy, budget-friendly hostel in Tapovan, Rishikesh near the Ganges and Laxman Jhula, popular with yoga enthusiasts and backpackers. Offers a friendly, community atmosphere with a rooftop common area and easy access to riverfront activities and yoga centers.',
+      features: ['Backpacker Friendly', 'Rooftop Views', 'Yoga-Friendly', 'River Access'],
+      image: '/images/Indian.jpg',
+      location: 'Tapovan, Rishikesh',
+    },
+  ];
+
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Banner */}
@@ -13,7 +44,7 @@ const Hospitality = () => {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `url('/images/pranam2.png')`,
+            backgroundImage: `url('/images/luxury-hotel.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -26,186 +57,99 @@ const Hospitality = () => {
             style={{ fontFamily: 'Playfair Display, serif' }}
             data-testid="hospitality-page-heading"
           >
-            <span className="text-[#d4af37]">Jagmal</span> Hospitality
+            <span className="text-[#d4af37]">Raja Jagmal</span> Hospitality
           </h1>
           <p
             className="text-xl md:text-2xl text-slate-200 leading-relaxed"
             style={{ fontFamily: 'Manrope, sans-serif' }}
           >
-            Culinary Excellence Meets Modern Lifestyle
+            Redefining Luxury and Comfort in Hospitality
           </p>
         </div>
       </section>
 
-      {/* Cafe Pranam Section */}
-      <section className="py-20 md:py-32 bg-slate-950" data-testid="cafe-pranam-section">
-        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div className="relative order-2 md:order-1">
-              <img
-                src="/images/pranam.png"
-                alt="Cafe Pranam"
-                className="rounded-xl shadow-2xl w-full h-[400px] object-cover"
-              />
-            </div>
-            <div className="order-1 md:order-2">
-              <div className="inline-block px-4 py-2 rounded-full bg-[#d4af37]/10 text-[#d4af37] text-sm font-medium mb-6">
-                Opening Soon
-              </div>
-              <h2
-                className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight"
-                style={{ fontFamily: 'Playfair Display, serif' }}
-                data-testid="cafe-name-heading"
-              >
-                Cafe PraNam
-              </h2>
-              <div className="flex items-center space-x-6 mb-6 text-slate-400">
-                <div className="flex items-center">
-                  <MapPin className="h-5 w-5 mr-2 text-[#d4af37]" />
-                  <span className="text-sm font-medium">Mumbai Churchgate</span>
-                </div>
-              </div>
-              <p
-                className="text-lg text-slate-300 leading-relaxed mb-6"
-                style={{ fontFamily: 'Manrope, sans-serif' }}
-              >
-                PraNam is a curated culinary journey along the sacred corridors of Uttar Pradesh. More than just a cafe, PraNam was envisioned as a tribute to the diverse flavors, spiritual heritage, and timeless stories found in the iconic cities of the state.              </p>
-              <p
-                className="text-lg text-slate-300 leading-relaxed mb-8"
-                style={{ fontFamily: 'Manrope, sans-serif' }}
-              >
-                We believe that "to eat is to journey," and we invite you to experience the legendary streets and spiritual centers of the region through our authentic offerings.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Section with Pranam 3 & 4 */}
-      <section className="py-20 md:py-32 bg-slate-950" data-testid="gallery-section">
-        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          <div className="text-center mb-16">
-            <h2
-              className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Our Culinary Spaces
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="relative overflow-hidden rounded-xl shadow-2xl">
-              <img
-                src="/images/pranam3.png"
-                alt="Pranam 3"
-                className="w-full h-[350px] object-cover"
-              />
-            </div>
-            <div className="relative overflow-hidden rounded-xl shadow-2xl">
-              <img
-                src="/images/pranam4.png"
-                alt="Pranam 4"
-                className="w-full h-[350px] object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section
-        className="py-20 md:py-32 bg-slate-900"
-        data-testid="cafe-features-section"
-      >
+      {/* Portfolio Section */}
+      <section className="py-20 md:py-32 bg-slate-950" data-testid="hospitality-portfolio-section">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2
               className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight"
               style={{ fontFamily: 'Playfair Display, serif' }}
-              data-testid="cafe-features-heading"
+              data-testid="portfolio-heading"
             >
-              What to Expect
+              Our Hotel Portfolio
             </h2>
             <p
               className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto"
               style={{ fontFamily: 'Manrope, sans-serif' }}
             >
-              A modern cafe experience designed for Mumbai's dynamic lifestyle.
+              Discover our upcoming properties, designed to offer exceptional experiences for every traveler.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card
-              className="p-8 border border-slate-800 hover:border-[#d4af37]/50 transition-all duration-500 hover:shadow-xl rounded-xl bg-slate-950"
-              data-testid="feature-card-artisan-coffee"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="p-4 rounded-full bg-[#d4af37]/10 mb-6">
-                  <Coffee className="h-8 w-8 text-[#d4af37]" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
+            {hotels.map((hotel, index) => (
+              <Card
+                key={index}
+                className="overflow-hidden rounded-xl border border-slate-800 hover:border-[#d4af37]/50 transition-all duration-500 hover:shadow-2xl bg-slate-950"
+                data-testid={`hotel-card-${hotel.name.toLowerCase().replace(/\s+/g, '-')}`}
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={hotel.image}
+                    alt={hotel.name}
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <span className="px-4 py-2 rounded-full bg-[#d4af37] text-white text-sm font-medium">
+                      {hotel.status}
+                    </span>
+                  </div>
                 </div>
-                <h3
-                  className="text-2xl font-medium text-white mb-4 tracking-tight"
-                  style={{ fontFamily: 'Playfair Display, serif' }}
-                >
-                  Artisan Coffee
-                </h3>
-                <p
-                  className="text-slate-300 leading-relaxed"
-                  style={{ fontFamily: 'Manrope, sans-serif' }}
-                >
-                  Expertly crafted beverages using premium beans from around the world.
-                </p>
-              </div>
-            </Card>
-
-            <Card
-              className="p-8 border border-slate-800 hover:border-[#d4af37]/50 transition-all duration-500 hover:shadow-xl rounded-xl bg-slate-950"
-              data-testid="feature-card-gourmet-food"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="p-4 rounded-full bg-[#d4af37]/10 mb-6">
-                  <Sparkles className="h-8 w-8 text-[#d4af37]" />
+                <div className="p-8">
+                  <h3
+                    className="text-3xl font-medium text-white mb-4 tracking-tight"
+                    style={{ fontFamily: 'Playfair Display, serif' }}
+                  >
+                    {hotel.name}
+                  </h3>
+                  <div className="flex items-center space-x-6 mb-6 text-slate-400">
+                    {hotel.rooms ? (
+                      <div className="flex items-center">
+                        <BedDouble className="h-5 w-5 mr-2 text-[#d4af37]" />
+                        <span className="text-sm font-medium">{hotel.rooms} Rooms</span>
+                      </div>
+                    ) : null}
+                    <div className="flex items-center">
+                      <MapPin className="h-5 w-5 mr-2 text-[#d4af37]" />
+                      <span className="text-sm font-medium">{hotel.location}</span>
+                    </div>
+                  </div>
+                  <p
+                    className="text-slate-300 leading-relaxed mb-6"
+                    style={{ fontFamily: 'Manrope, sans-serif' }}
+                  >
+                    {hotel.description}
+                  </p>
+                  <div>
+                    <h4 className="text-sm font-semibold text-white mb-3 uppercase tracking-wider">
+                      Key Features
+                    </h4>
+                    <div className="grid grid-cols-2 gap-3">
+                      {hotel.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-center">
+                          <Sparkles className="h-4 w-4 text-[#d4af37] mr-2" />
+                          <span className="text-sm text-slate-400">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <h3
-                  className="text-2xl font-medium text-white mb-4 tracking-tight"
-                  style={{ fontFamily: 'Playfair Display, serif' }}
-                >
-                  Gourmet Food
-                </h3>
-                <p
-                  className="text-slate-300 leading-relaxed"
-                  style={{ fontFamily: 'Manrope, sans-serif' }}
-                >
-                  A carefully curated menu featuring both local and international cuisines.
-                </p>
-              </div>
-            </Card>
-
-            <Card
-              className="p-8 border border-slate-800 hover:border-[#d4af37]/50 transition-all duration-500 hover:shadow-xl rounded-xl bg-slate-950"
-              data-testid="feature-card-all-day-dining"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="p-4 rounded-full bg-[#d4af37]/10 mb-6">
-                  <Clock className="h-8 w-8 text-[#d4af37]" />
-                </div>
-                <h3
-                  className="text-2xl font-medium text-white mb-4 tracking-tight"
-                  style={{ fontFamily: 'Playfair Display, serif' }}
-                >
-                  All-Day Dining
-                </h3>
-                <p
-                  className="text-slate-300 leading-relaxed"
-                  style={{ fontFamily: 'Manrope, sans-serif' }}
-                >
-                  Open throughout the day to serve breakfast, lunch, dinner, and everything in between.
-                </p>
-              </div>
-            </Card>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );

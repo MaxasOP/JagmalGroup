@@ -31,9 +31,9 @@ export const Navbar = () => {
   ];
 
   const businessLinks = [
-    { name: 'Hotels', path: '/hotels' },
+    { name: 'Hospitality', path: '/hotels' },
     { name: 'Logistics & Industrial Parks', path: '/logistics' },
-    { name: 'Hospitality', path: '/hospitality' },
+    { name: 'PraNam', path: '/hospitality' },
     { name: 'Precast & 3D Printing', path: '/precast' },
   ];
 
