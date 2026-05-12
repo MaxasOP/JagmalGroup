@@ -20,7 +20,7 @@ const hotels = [
       description: 'An upscale resort offering premium experiences and world-class facilities.',
       location: 'UP',
       features: ['Luxury Suites', 'Swimming Pool', 'Spa & Wellness', 'Fine Dining'],
-      image: '/images/Sterling2.png',
+      image: '/images/Sterling.png',
     },
     {
       name: 'Indian Culture Hostels',
