@@ -98,7 +98,7 @@ const hotels = [
                   <img
                     src={hotel.image}
                     alt={hotel.name}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                    className="w-full h-full object-contain bg-slate-900 p-2"
                   />
                   <div className="absolute top-4 right-4">
                     <span className="px-4 py-2 rounded-full bg-[#d4af37] text-white text-sm font-medium">

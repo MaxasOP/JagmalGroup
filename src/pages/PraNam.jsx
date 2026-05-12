@@ -104,7 +104,7 @@ const PraNam = () => {
               <img
                 src="/images/pranam4.png"
                 alt="Pranam 4"
-                className="w-full h-[350px] object-cover"
+                className="w-full h-[350px] object-contain bg-slate-900 p-2"
               />
             </div>
           </div>
