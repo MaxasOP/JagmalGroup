@@ -11,7 +11,7 @@ const Home = () => {
       title: 'Jagmal Hotels',
       description: 'Beyond Five Stars. Into the Unforgettable.',
       icon: Building2,
-      image: '/images/Sterling.png',
+      image: '/images/hotels.png',
       path: '/hotels',
       span: 'md:col-span-2 md:row-span-2',
     },
