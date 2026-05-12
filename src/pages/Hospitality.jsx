@@ -13,7 +13,7 @@ const Hospitality = () => {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `url('/images/mumbai-skyline.jpg')`,
+            backgroundImage: `url('/images/pranam2.png')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -43,7 +43,7 @@ const Hospitality = () => {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="relative order-2 md:order-1">
               <img
-                src="/images/city-night.png"
+                src="/images/pranam.png"
                 alt="Cafe Pranam"
                 className="rounded-xl shadow-2xl w-full h-[400px] object-cover"
               />
@@ -172,6 +172,36 @@ const Hospitality = () => {
                 </p>
               </div>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section with Pranam 3 & 4 */}
+      <section className="py-20 md:py-32 bg-slate-950" data-testid="gallery-section">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          <div className="text-center mb-16">
+            <h2
+              className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight"
+              style={{ fontFamily: 'Playfair Display, serif' }}
+            >
+              Our Culinary Spaces
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="relative overflow-hidden rounded-xl shadow-2xl">
+              <img
+                src="/images/pranam3.png"
+                alt="Pranam 3"
+                className="w-full h-[350px] object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="relative overflow-hidden rounded-xl shadow-2xl">
+              <img
+                src="/images/pranam4.png"
+                alt="Pranam 4"
+                className="w-full h-[350px] object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
           </div>
         </div>
       </section>
