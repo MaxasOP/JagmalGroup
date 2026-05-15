@@ -24,7 +24,7 @@ const Home = () => {
       span: 'md:col-span-1 md:row-span-1',
     },
     {
-      title: 'JagmalHospitality',
+      title: 'Jagmal Hospitality',
       description: 'Culinary Excellence at the Heart of Mumbai.',
       icon: Utensils,
       image: '/images/mumbai-skyline.jpg',
