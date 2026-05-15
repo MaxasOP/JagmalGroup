@@ -8,7 +8,7 @@ import CanvasSkyline from '../components/CanvasSkyline';
 const Home = () => {
   const verticals = [
     {
-      title: 'Hotels',
+      title: 'Jagmal Hotels',
       description: 'Beyond Five Stars. Into the Unforgettable.',
       icon: Building2,
       image: '/images/hotels.png',
@@ -24,7 +24,7 @@ const Home = () => {
       span: 'md:col-span-1 md:row-span-1',
     },
     {
-      title: 'Hospitality',
+      title: 'JagmalHospitality',
       description: 'Culinary Excellence at the Heart of Mumbai.',
       icon: Utensils,
       image: '/images/mumbai-skyline.jpg',
