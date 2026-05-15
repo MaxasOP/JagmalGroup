@@ -8,9 +8,9 @@ import { Toaster } from './components/ui/sonner';
 import Home from './pages/Home';
 import About from './pages/About';
 import Philanthropy from './pages/Philanthropy';
-import Hospitality from './pages/Hospitality';
+import Hotels from './pages/Hotels';
 import Logistics from './pages/Logistics';
-import PraNam from './pages/PraNam';
+import Hospitality from './pages/Hospitality';
 import Precast from './pages/Precast';
 import Leadership from './pages/Leadership';
 import Contact from './pages/Contact';
@@ -35,9 +35,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/philanthropy" element={<Philanthropy />} />
-          <Route path="/hotels" element={<Hospitality />} />
+          <Route path="/hotels" element={<Hotels />} />
           <Route path="/logistics" element={<Logistics />} />
-          <Route path="/hospitality" element={<PraNam />} />
+          <Route path="/hospitality" element={<Hospitality />} />
           <Route path="/precast" element={<Precast />} />
           <Route path="/leadership" element={<Leadership />} />
           <Route path="/contact" element={<Contact />} />
