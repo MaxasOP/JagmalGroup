@@ -1,6 +1,7 @@
 import { Card } from '../components/ui/card';
 import { MapPin, BedDouble, Sparkles } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const Hotels = () => {
   const hotels = [
@@ -36,6 +37,11 @@ const Hotels = () => {
 
   return (
     <div className="min-h-screen pt-20">
+      <SEO
+        title="Jagmal Hotels | Luxury Hospitality"
+        description="Discover Jagmal Hotels, a growing hospitality portfolio focused on comfort, service and memorable stays."
+        path="/hotels"
+      />
       {/* Hero Banner */}
       <section
         className="relative h-[60vh] flex items-center justify-center overflow-hidden"

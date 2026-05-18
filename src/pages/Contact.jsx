@@ -8,6 +8,7 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { toast } from 'sonner';
 
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -53,6 +54,11 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen pt-20">
+      <SEO
+        title="Contact Jagmal Group | Enquiries & Partnerships"
+        description="Get in touch with Jagmal Group for partnerships, enquiries, and business opportunities."
+        path="/contact"
+      />
       {/* Hero Banner */}
       <section
         className="relative h-[60vh] flex items-center justify-center overflow-hidden"

@@ -1,10 +1,16 @@
 import { Card } from '../components/ui/card';
 import { Linkedin, Mail, Instagram } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const Leadership = () => {
   return (
     <div className="min-h-screen pt-20">
+      <SEO
+        title="Jagmal Leadership | Chairman & Management"
+        description="Meet the leadership guiding Jagmal Group's growth across hospitality, logistics, and construction."
+        path="/leadership"
+      />
       {/* Hero Banner */}
       <section
         className="relative h-[60vh] flex items-center justify-center overflow-hidden"

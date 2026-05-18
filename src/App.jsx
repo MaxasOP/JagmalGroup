@@ -14,6 +14,7 @@ import Hospitality from './pages/Hospitality';
 import Precast from './pages/Precast';
 import Leadership from './pages/Leadership';
 import Contact from './pages/Contact';
+import Projects from './pages/Projects';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -34,6 +35,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/philanthropy" element={<Philanthropy />} />
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/logistics" element={<Logistics />} />
