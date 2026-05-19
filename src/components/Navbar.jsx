@@ -9,14 +9,6 @@ export const Navbar = () => {
   const [businessesOpen, setBusinessesOpen] = useState(false);
   const location = useLocation();
 
-  const topLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Hotels', path: '/hotels' },
-    { name: 'Services', path: '/projects' },
-    { name: 'Contact', path: '/contact' },
-  ];
-
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -29,6 +21,14 @@ export const Navbar = () => {
     setMobileOpen(false);
     setBusinessesOpen(false);
   }, [location.pathname]);
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Philanthropy', path: '/philanthropy' },
+    { name: 'Leadership', path: '/leadership' },
+    { name: 'Contact', path: '/contact' },
+  ];
 
   const businessLinks = [
     { name: 'Hotels', path: '/hotels' },
@@ -60,7 +60,7 @@ export const Navbar = () => {
             </Link>
 
             <div className="hidden items-center space-x-8 md:flex">
-              {topLinks.slice(0, 2).map((link) => (
+              {navLinks.slice(0, 2).map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
@@ -68,13 +68,13 @@ export const Navbar = () => {
                     location.pathname === link.path ? 'text-amber-500' : 'text-slate-200'
                   }`}
                 >
-                    {link.name}
+                  {link.name}
                 </Link>
               ))}
 
               <div className="group relative">
                 <button className="flex items-center gap-1 text-base font-medium text-slate-200 transition-colors duration-300 hover:text-amber-500">
-                  <span>Services</span>
+                  <span>Our Businesses</span>
                   <ChevronDown className="h-4 w-4" />
                 </button>
                 <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-64 -translate-x-1/2 rounded-lg border border-slate-800 bg-slate-900 p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
@@ -92,7 +92,7 @@ export const Navbar = () => {
                 </div>
               </div>
 
-              {topLinks.slice(2).map((link) => (
+              {navLinks.slice(2).map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
@@ -137,31 +137,13 @@ export const Navbar = () => {
                 Home
               </Link>
               
-              {/* About */}
+              {/* About Us */}
               <Link
                 to="/about"
                 onClick={() => setMobileOpen(false)}
                 className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
               >
-                  About
-              </Link>
-
-              {/* Hotels */}
-              <Link
-                to="/hotels"
-                onClick={() => setMobileOpen(false)}
-                className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
-              >
-                Hotels
-              </Link>
-
-              {/* Services */}
-              <Link
-                to="/projects"
-                onClick={() => setMobileOpen(false)}
-                className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
-              >
-                Services
+                About Us
               </Link>
               
               {/* Our Businesses - Dropdown */}

@@ -1,14 +1,8 @@
 import Footer from '../components/Footer';
-import SEO from '../components/SEO';
 
 const Philanthropy = () => {
   return (
     <div className="min-h-screen pt-20">
-      <SEO
-        title="Jagmal Philanthropy | Community Support & Relief"
-        description="Read about Jagmal Group's philanthropy efforts and community support initiatives."
-        path="/philanthropy"
-      />
       {/* Hero Banner */}
       <section
         className="relative h-[60vh] flex items-center justify-center overflow-hidden"

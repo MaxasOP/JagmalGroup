@@ -11,14 +11,6 @@ const Footer = () => {
     { name: 'Precast & 3D Printing', path: '/precast' },
   ];
 
-  const quickLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Services', path: '/projects' },
-    { name: 'Leadership', path: '/leadership' },
-    { name: 'Contact', path: '/contact' },
-  ];
-
   return (
     <footer className="relative z-30 border-t border-slate-800 bg-slate-950 text-slate-300">
       <div className="container mx-auto px-4 md:px-8 py-12">
@@ -51,13 +43,26 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.path}>
-                  <Link to={link.path} className="hover:text-amber-500 transition-colors duration-300">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link to="/" className="hover:text-amber-500 transition-colors duration-300">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-amber-500 transition-colors duration-300">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/leadership" className="hover:text-amber-500 transition-colors duration-300">
+                  Leadership
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-amber-500 transition-colors duration-300">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 

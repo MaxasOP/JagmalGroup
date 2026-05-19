@@ -1,7 +1,6 @@
 import { Award, Target, Heart, Shield } from 'lucide-react';
 import { Card } from '../components/ui/card';
 import Footer from '../components/Footer';
-import SEO from '../components/SEO';
 
 const About = () => {
   const values = [
@@ -29,11 +28,6 @@ const About = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <SEO
-        title="About Jagmal Group | Heritage, Vision & Leadership"
-        description="Learn about the heritage, leadership, and values behind Jagmal Group's diversified businesses."
-        path="/about"
-      />
       {/* Hero Banner */}
       <section
         className="relative h-[60vh] flex items-center justify-center overflow-hidden"

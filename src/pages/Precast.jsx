@@ -1,7 +1,6 @@
 import { Card } from '../components/ui/card';
 import { Settings, TrendingUp, Zap, Hammer } from 'lucide-react';
 import Footer from '../components/Footer';
-import SEO from '../components/SEO';
 
 const Precast = () => {
   const features = [
@@ -29,11 +28,6 @@ const Precast = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <SEO
-        title="Jagmal Precast & 3D Printing | Construction Innovation"
-        description="See how Jagmal Precast combines precast manufacturing and 3D printing for modern construction."
-        path="/precast"
-      />
       {/* Hero Banner */}
       <section
         className="relative h-[60vh] flex items-center justify-center overflow-hidden"

@@ -1,16 +1,10 @@
 import { Card } from '../components/ui/card';
 import { Coffee, MapPin, Clock, Sparkles } from 'lucide-react';
 import Footer from '../components/Footer';
-import SEO from '../components/SEO';
 
 const Hospitality = () => {
   return (
     <div className="min-h-screen pt-20">
-      <SEO
-        title="Jagmal Hospitality | Culinary Experiences in Mumbai"
-        description="Discover Jagmal Hospitality, a curated culinary concept designed around food, atmosphere, and service."
-        path="/hospitality"
-      />
       {/* Hero Banner */}
       <section
         className="relative h-[60vh] flex items-center justify-center overflow-hidden"

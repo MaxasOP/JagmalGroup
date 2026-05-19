@@ -1,7 +1,6 @@
 import { Card } from '../components/ui/card';
 import { Package, TrendingUp, MapPin, Zap } from 'lucide-react';
 import Footer from '../components/Footer';
-import SEO from '../components/SEO';
 
 const Logistics = () => {
   const features = [
@@ -29,11 +28,6 @@ const Logistics = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <SEO
-        title="Jagmal Logistics | Industrial Parks & Warehousing"
-        description="Explore Jagmal Logistics and industrial park infrastructure built for modern warehousing and distribution."
-        path="/logistics"
-      />
       {/* Hero Banner */}
       <section
         className="relative h-[60vh] flex items-center justify-center overflow-hidden"

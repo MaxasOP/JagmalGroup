@@ -4,7 +4,6 @@ import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 import Footer from '../components/Footer';
 import CanvasSkyline from '../components/CanvasSkyline';
-import SEO from '../components/SEO';
 
 const Home = () => {
   const verticals = [
@@ -44,11 +43,6 @@ const Home = () => {
 
   return (
     <div className="relative min-h-screen">
-      <SEO
-        title="Jagmal Group | Hospitality, Construction & Logistics"
-        description="Jagmal Group is a diversified business group with hospitality, logistics, construction and lifestyle ventures across India."
-        path="/"
-      />
 
       <section className="relative flex min-h-screen items-center overflow-hidden" data-testid="hero-section">
         <CanvasSkyline />
@@ -82,17 +76,6 @@ const Home = () => {
             >
               Explore Our World <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link to="/hotels" className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm uppercase tracking-[0.18em] text-[#f1ece2] transition-colors hover:border-[#bda35e] hover:text-[#bda35e]">
-                Hotels
-              </Link>
-              <Link to="/projects" className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm uppercase tracking-[0.18em] text-[#f1ece2] transition-colors hover:border-[#bda35e] hover:text-[#bda35e]">
-                Services
-              </Link>
-              <Link to="/about" className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm uppercase tracking-[0.18em] text-[#f1ece2] transition-colors hover:border-[#bda35e] hover:text-[#bda35e]">
-                About
-              </Link>
-            </div>
           </div>
         </div>
       </section>
@@ -136,11 +119,6 @@ const Home = () => {
               );
             })}
           </div>
-              <div className="mt-10 text-center">
-                <Link to="/projects" className="inline-flex items-center rounded-full border border-[#d4af37]/40 px-6 py-3 text-sm font-semibold text-[#e9d6ab] transition-colors hover:border-[#d4af37] hover:bg-[#d4af37]/10">
-                  View Services Hub <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </div>
         </div>
       </section>
       <div className="relative z-20">
