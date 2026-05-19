@@ -51,11 +51,11 @@ export const Navbar = () => {
           <div className="flex h-16 items-center justify-between sm:h-20">
             <Link
               to="/"
-              className="whitespace-nowrap text-[1.35rem] font-bold leading-none tracking-tight sm:text-2xl md:text-3xl"
+              className="whitespace-nowrap text-[1.35rem] font-bold leading-none tracking-tight pl-4 md:pl-0 sm:text-2xl md:text-3xl"
               style={{ fontFamily: 'Playfair Display, serif' }}
               data-testid="navbar-logo"
             >
-              <span className="text-white"> JAGMAL</span>
+              <span className="text-white">JAGMAL</span>
               <span className="text-amber-500"> GROUP</span>
             </Link>
 
