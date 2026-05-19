@@ -55,7 +55,7 @@ export const Navbar = () => {
               style={{ fontFamily: 'Playfair Display, serif' }}
               data-testid="navbar-logo"
             >
-              <span className="text-white">JAGMAL</span>
+              <span className="text-white"> JAGMAL</span>
               <span className="text-amber-500"> GROUP</span>
             </Link>
 
