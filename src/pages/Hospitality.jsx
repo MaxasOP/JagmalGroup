@@ -43,7 +43,7 @@ const Hospitality = () => {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="relative order-2 md:order-1">
               <img
-                src="/images/pranam.png"
+                src="/images/pranam1.png"
                 alt="Jagmal Hospitality"
                 className="rounded-xl shadow-2xl w-full h-[400px] object-cover"
               />
@@ -106,13 +106,6 @@ const Hospitality = () => {
                 src="/images/pranam4.png"
                 alt="Jagmal Hospitality 4"
                 className="w-full h-[350px] object-contain bg-slate-900 p-2"
-              />
-            </div>
-            <div className="relative overflow-hidden rounded-xl shadow-2xl">
-              <img
-                src="/images/pranam1.png"
-                alt="Jagmal Hospitality 1"
-                className="w-full h-[350px] object-cover"
               />
             </div>
           </div>
