@@ -33,14 +33,12 @@ const Precast = () => {
         className="relative h-[60vh] flex items-center justify-center overflow-hidden"
         data-testid="precast-hero-section"
       >
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url('/images/precast-construction.jpg')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/precast-construction.jpg"
+            alt="Precast construction"
+            className="w-full h-full object-cover object-top"
+          />
           <div className="absolute inset-0 bg-slate-950/80"></div>
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
