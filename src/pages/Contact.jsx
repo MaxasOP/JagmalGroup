@@ -143,7 +143,7 @@ const Contact = () => {
                       <h3 className="text-lg font-medium text-white mb-2">
                         Headquarters
                       </h3>
-                      <p className="text-slate-400">Mumbai</p>
+                      <p className="text-slate-400">Crsytal 14-B Altamount Road, Mumbai</p>
                     </div>
                   </div>
                 </Card>

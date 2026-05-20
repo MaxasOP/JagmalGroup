@@ -50,26 +50,26 @@ const Hospitality = () => {
             </div>
             <div className="order-1 md:order-2">
               <div className="inline-block px-4 py-2 rounded-full bg-[#d4af37]/10 text-[#d4af37] text-sm font-medium mb-6">
-                Opening Soon
+                Serving Soon
               </div>
               <h2
                 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight"
                 style={{ fontFamily: 'Playfair Display, serif' }}
                 data-testid="cafe-name-heading"
               >
-                Jagmal Hospitality
+                PraNam Cafe
               </h2>
               <div className="flex items-center space-x-6 mb-6 text-slate-400">
                 <div className="flex items-center">
                   <MapPin className="h-5 w-5 mr-2 text-[#d4af37]" />
-                  <span className="text-sm font-medium">Mumbai Churchgate</span>
+                  <span className="text-sm font-medium">Marine Lines, Mumbai</span>
                 </div>
               </div>
               <p
                 className="text-lg text-slate-300 leading-relaxed mb-6"
                 style={{ fontFamily: 'Manrope, sans-serif' }}
               >
-                Jagmal Hospitality is a curated culinary journey along the sacred corridors of Uttar Pradesh. More than just a cafe, Jagmal Hospitality was envisioned as a tribute to the diverse flavors, spiritual heritage, and timeless stories found in the iconic cities of the state.
+                PraNam is a curated culinary journey along the sacred corridors of Uttar Pradesh. More than just a cafe, PraNam was envisioned as a tribute to the diverse flavors, spiritual heritage, and timeless stories found in the iconic cities of the state.
               </p>
               <p
                 className="text-lg text-slate-300 leading-relaxed mb-8"
@@ -105,6 +105,13 @@ const Hospitality = () => {
               <img
                 src="/images/pranam4.png"
                 alt="Jagmal Hospitality 4"
+                className="w-full h-[350px] object-cover"
+              />
+            </div>
+            <div className="relative overflow-hidden rounded-xl shadow-2xl">
+              <img
+                src="/images/pranam5.png"
+                alt="Jagmal Hospitality 5"
                 className="w-full h-[350px] object-cover"
               />
             </div>
