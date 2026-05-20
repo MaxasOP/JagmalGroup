@@ -45,7 +45,7 @@ const Hospitality = () => {
               <img
                 src="/images/pranam1.png"
                 alt="Jagmal Hospitality"
-                className="rounded-xl shadow-2xl w-full h-[400px] object-contain bg-slate-900 p-2"
+                className="rounded-xl shadow-2xl w-full aspect-[2399/1501] object-cover"
               />
             </div>
             <div className="order-1 md:order-2">

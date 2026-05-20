@@ -99,7 +99,7 @@ const Precast = () => {
               <img
                 src="/images/3dp.jpg"
                 alt="Precast Facility"
-                className="rounded-xl shadow-2xl w-full h-[400px] object-contain bg-slate-900 p-2"
+                className="rounded-xl shadow-2xl w-full aspect-[1728/730] object-cover"
               />
             </div>
           </div>
