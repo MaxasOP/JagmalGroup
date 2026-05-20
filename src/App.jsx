@@ -5,7 +5,8 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Toaster } from './components/ui/sonner';
-import { CookieConsent } from './components/ui/cookieConsent';
+// CookieConsent saved for later use
+// import { CookieConsent } from './components/ui/cookieConsent';
 import Home from './pages/Home';
 import About from './pages/About';
 import Philanthropy from './pages/Philanthropy';
@@ -44,7 +45,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <Toaster position="top-center" richColors theme="dark" />
-        <CookieConsent />
+        {/* CookieConsent saved for later use
+        <CookieConsent /> */}
       </BrowserRouter>
     </div>
   );

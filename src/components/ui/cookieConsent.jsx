@@ -1,3 +1,10 @@
+/*
+  CookieConsent component (commented out for later use)
+
+  To restore: remove the surrounding comment markers and re-import in App.jsx:
+    import { CookieConsent } from './components/ui/cookieConsent';
+    <CookieConsent />
+
 import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
 
@@ -60,3 +67,5 @@ const CookieConsent = () => {
 }
 
 export { CookieConsent }
+
+*/
