@@ -99,7 +99,7 @@ const Precast = () => {
             </div>
             <div className="relative">
               <img
-                src="/images/Facility.jpeg"
+                src="/images/3dp.jpg"
                 alt="Precast Facility"
                 className="rounded-xl shadow-2xl w-full h-[400px] object-cover"
               />

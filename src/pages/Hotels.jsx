@@ -20,7 +20,7 @@ const Hotels = () => {
       description: 'An upscale resort offering premium experiences and world-class facilities.',
       location: 'UP',
       features: ['Luxury Suites', 'Swimming Pool', 'Spa & Wellness', 'Fine Dining'],
-      image: '/images/Sterling2.png',
+      image: '/images/Sterling1.png',
     },
     {
       name: 'Indian Culture Hostels',
@@ -29,7 +29,7 @@ const Hotels = () => {
       description:
         'A cozy, budget-friendly hostel in Tapovan, Rishikesh near the Ganges and Laxman Jhula, popular with yoga enthusiasts and backpackers. Offers a friendly, community atmosphere with a rooftop common area and easy access to riverfront activities and yoga centers.',
       features: ['Backpacker Friendly', 'Rooftop Views', 'Yoga-Friendly', 'River Access'],
-      image: '/images/Indian.jpg',
+      image: '/images/Indian.png',
       location: 'Tapovan, Rishikesh',
     },
   ];

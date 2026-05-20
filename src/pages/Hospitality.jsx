@@ -93,7 +93,7 @@ const Hospitality = () => {
               Our Culinary Spaces
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="relative overflow-hidden rounded-xl shadow-2xl">
               <img
                 src="/images/pranam3.png"
@@ -106,6 +106,13 @@ const Hospitality = () => {
                 src="/images/pranam4.png"
                 alt="Jagmal Hospitality 4"
                 className="w-full h-[350px] object-contain bg-slate-900 p-2"
+              />
+            </div>
+            <div className="relative overflow-hidden rounded-xl shadow-2xl">
+              <img
+                src="/images/pranam1.png"
+                alt="Jagmal Hospitality 1"
+                className="w-full h-[350px] object-cover"
               />
             </div>
           </div>
