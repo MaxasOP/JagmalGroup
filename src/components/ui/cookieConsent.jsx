@@ -41,7 +41,10 @@ const CookieConsent = () => {
       </button>
       <div className="flex flex-col gap-4 pr-10 sm:pr-12 sm:flex-row sm:items-center sm:gap-5">
         <div className="text-sm leading-relaxed text-slate-800 dark:text-slate-200">
-        This website uses cookies. We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.
+          <span className="sm:hidden">This site uses cookies to improve your experience.</span>
+          <span className="hidden sm:inline">
+            This website uses cookies. We use cookies to analyze website traffic and optimize your website experience.
+          </span>
         </div>
         <div className="flex-shrink-0 sm:ml-auto">
         <button
