@@ -105,7 +105,7 @@ const Hospitality = () => {
               <img
                 src="/images/pranam4.png"
                 alt="Jagmal Hospitality 4"
-                className="w-full h-[350px] object-contain bg-slate-900 p-2"
+                className="w-full h-[350px] object-cover"
               />
             </div>
           </div>
