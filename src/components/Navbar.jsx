@@ -55,8 +55,11 @@ export const Navbar = () => {
               style={{ fontFamily: 'Playfair Display, serif' }}
               data-testid="navbar-logo"
             >
-              <span className="text-white">JAGMAL</span>
-              <span className="text-amber-500"> GROUP</span>
+              <img
+                src="/images/logo.svg"
+                alt="Jagmal Group"
+                className="h-8 md:h-10 w-auto inline-block"
+              />
             </Link>
 
             <div className="hidden items-center space-x-8 md:flex">

@@ -18,8 +18,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <Link to="/" className="text-2xl font-bold tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-<span className="text-slate-100">JAGMAL</span>
-              <span className="text-amber-500"> GROUP</span>
+              <img src="/images/logo.svg" alt="Jagmal Group" className="h-8 w-auto inline-block" />
             </Link>
             <p className="mt-4 text-sm leading-relaxed">
               A legacy of excellence spanning multiple industries including hospitality, logistics, and construction sectors.
