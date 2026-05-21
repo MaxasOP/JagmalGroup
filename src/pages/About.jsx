@@ -33,16 +33,16 @@ const About = () => {
         className="relative h-[60vh] flex items-center justify-center overflow-hidden"
         data-testid="about-hero-section"
       >
-        <img
-          src="/images/jimg.png"
-          alt="Jagmal Group"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-slate-950/80" />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url('/images/corporate-abstract.jpg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950/40"></div>
         </div>
-
       </section>
 
 
