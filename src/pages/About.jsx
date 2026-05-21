@@ -109,7 +109,7 @@ const About = () => {
                 </div>
                 <div className="p-5 rounded-lg bg-slate-900 border border-slate-800">
                   <p className="text-sm text-[#d4af37] uppercase tracking-wider mb-2">Known For</p>
-                  <p className="text-white text-lg font-medium">Railways, industry, philanthropy</p>
+                  <p className="text-white text-lg font-medium">Railways, industrialist, airline owner, philanthropist</p>
                 </div>
                 <div className="p-5 rounded-lg bg-slate-900 border border-slate-800 sm:col-span-2">
                   <p className="text-sm text-[#d4af37] uppercase tracking-wider mb-2">Legacy</p>

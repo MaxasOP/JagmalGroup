@@ -69,7 +69,7 @@ const Hospitality = () => {
                 className="text-lg text-slate-300 leading-relaxed mb-6"
                 style={{ fontFamily: 'Manrope, sans-serif' }}
               >
-                PraNam is a curated culinary journey along the sacred corridors of Uttar Pradesh. More than just a cafe, PraNam was envisioned as a tribute to the diverse flavors, spiritual heritage, and timeless stories found in the iconic cities of the state.
+                PraNam is a curated culinary journey along different parts of India. More than just a cafe, PraNam was envisioned as a tribute to the diverse flavors, spiritual heritage, and timeless stories found in the iconic cities of the state.
               </p>
               <p
                 className="text-lg text-slate-300 leading-relaxed mb-8"
