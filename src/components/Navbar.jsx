@@ -40,23 +40,61 @@ export const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrolled
-            ? 'backdrop-blur-xl bg-slate-900/80 shadow-lg border-b border-slate-800'
-            : 'bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-50 border-b border-slate-800/40 transition-colors duration-300 ${
+          scrolled ? 'bg-slate-900/90 backdrop-blur-md' : 'bg-transparent'
         }`}
-        data-testid="main-navbar"
       >
-        <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 md:px-8">
-          <div className="flex h-16 items-center justify-between sm:h-20">
+        <div className="mx-auto w-full max-w-screen-xl px-4">
+          <div className="flex h-16 items-center justify-between">
             <Link
               to="/"
               className="whitespace-nowrap text-[1.35rem] font-bold leading-none tracking-tight pl-3 md:pl-0 sm:text-2xl md:text-3xl"
               style={{ fontFamily: 'Playfair Display, serif' }}
               data-testid="navbar-logo"
             >
-              <span className="text-white">JAGMAL</span>
-              <span className="text-amber-500"> GROUP</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 500"
+                className="h-8 md:h-10 w-auto inline-block"
+                preserveAspectRatio="xMinYMid meet"
+                aria-label="Jagmal Group"
+              >
+                <defs>
+                  <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#b48c36" />
+                    <stop offset="30%" stopColor="#e6c875" />
+                    <stop offset="70%" stopColor="#d4af37" />
+                    <stop offset="100%" stopColor="#996515" />
+                  </linearGradient>
+                </defs>
+
+                <rect width="100%" height="100%" fill="#ffffff" />
+
+                <g fontFamily="Georgia, 'Times New Roman', serif">
+                  <text x="140" y="210" fontSize="45" fontWeight="normal" fill="#1a1a1a">
+                    The
+                  </text>
+                  <text
+                    x="60"
+                    y="280"
+                    fontSize="120"
+                    fontWeight="normal"
+                    fill="#1a1a1a"
+                    letterSpacing={-2}
+                  >
+                    Jagmal
+                  </text>
+                  <text
+                    x="240"
+                    y="340"
+                    fontSize="75"
+                    fontWeight="normal"
+                    fill="url(#goldGradient)"
+                  >
+                    Group
+                  </text>
+                </g>
+              </svg>
             </Link>
 
             <div className="hidden items-center space-x-8 md:flex">
@@ -113,11 +151,7 @@ export const Navbar = () => {
                 className="h-12 w-12 rounded-full border border-slate-700/70 bg-slate-800/40 p-0 text-slate-100 shadow-lg backdrop-blur-sm hover:bg-slate-700/60 hover:text-amber-500"
                 data-testid="mobile-menu-trigger"
               >
-                {mobileOpen ? (
-                  <X className="h-8 w-8" strokeWidth={2.75} />
-                ) : (
-                  <Menu className="h-8 w-8" strokeWidth={2.75} />
-                )}
+                {mobileOpen ? <X className="h-8 w-8" strokeWidth={2.75} /> : <Menu className="h-8 w-8" strokeWidth={2.75} />}
               </Button>
             </div>
           </div>
@@ -128,7 +162,6 @@ export const Navbar = () => {
         <div className="fixed inset-x-0 top-16 z-40 border-b border-slate-800 bg-slate-900 shadow-lg sm:top-20 md:hidden">
           <div className="mx-auto w-full max-w-screen-xl px-4 py-4 sm:px-6 sm:py-6">
             <div className="flex flex-col space-y-2">
-              {/* Home */}
               <Link
                 to="/"
                 onClick={() => setMobileOpen(false)}
@@ -136,8 +169,7 @@ export const Navbar = () => {
               >
                 Home
               </Link>
-              
-              {/* About Us */}
+
               <Link
                 to="/about"
                 onClick={() => setMobileOpen(false)}
@@ -145,17 +177,18 @@ export const Navbar = () => {
               >
                 About Us
               </Link>
-              
-              {/* Our Businesses - Dropdown */}
+
               <div className="py-2">
                 <button
                   onClick={() => setBusinessesOpen(!businessesOpen)}
                   className="flex items-center justify-between w-full text-lg font-medium text-slate-300 hover:text-amber-500 transition-colors duration-300"
                 >
                   <span>Our Businesses</span>
-                  <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${businessesOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`h-5 w-5 transition-transform duration-300 ${businessesOpen ? 'rotate-180' : ''}`}
+                  />
                 </button>
-                
+
                 {businessesOpen && (
                   <div className="ml-4 mt-2 space-y-2 border-l-2 border-slate-700 pl-4">
                     {businessLinks.map((link) => (
@@ -174,8 +207,7 @@ export const Navbar = () => {
                   </div>
                 )}
               </div>
-              
-              {/* Leadership */}
+
               <Link
                 to="/leadership"
                 onClick={() => setMobileOpen(false)}
@@ -183,8 +215,7 @@ export const Navbar = () => {
               >
                 Leadership
               </Link>
-              
-              {/* Philanthropy */}
+
               <Link
                 to="/philanthropy"
                 onClick={() => setMobileOpen(false)}
@@ -192,8 +223,7 @@ export const Navbar = () => {
               >
                 Philanthropy
               </Link>
-              
-              {/* Contact */}
+
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
@@ -208,5 +238,4 @@ export const Navbar = () => {
     </>
   );
 };
-
 

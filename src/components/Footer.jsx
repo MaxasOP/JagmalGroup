@@ -18,8 +18,30 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <Link to="/" className="text-2xl font-bold tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-<span className="text-slate-100">JAGMAL</span>
-              <span className="text-amber-500"> GROUP</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 500"
+                className="h-8 w-auto inline-block"
+                preserveAspectRatio="xMinYMid meet"
+                aria-label="Jagmal Group"
+              >
+                <defs>
+                  <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#b48c36" />
+                    <stop offset="30%" stopColor="#e6c875" />
+                    <stop offset="70%" stopColor="#d4af37" />
+                    <stop offset="100%" stopColor="#996515" />
+                  </linearGradient>
+                </defs>
+
+                <rect width="100%" height="100%" fill="#ffffff" />
+
+                <g fontFamily="Georgia, 'Times New Roman', serif">
+                  <text x="140" y="210" fontSize="45" fontWeight="normal" fill="#1a1a1a">The</text>
+                  <text x="60" y="280" fontSize="120" fontWeight="normal" fill="#1a1a1a" letterSpacing={-2}>Jagmal</text>
+                  <text x="240" y="340" fontSize="75" fontWeight="normal" fill="url(#goldGradient)">Group</text>
+                </g>
+              </svg>
             </Link>
             <p className="mt-4 text-sm leading-relaxed">
               A legacy of excellence spanning multiple industries including hospitality, logistics, and construction sectors.
