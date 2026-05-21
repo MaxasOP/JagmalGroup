@@ -33,24 +33,13 @@ const About = () => {
         className="relative h-[60vh] flex items-center justify-center overflow-hidden"
         data-testid="about-hero-section"
       >
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url('/images/corporate-abstract.jpg')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <div className="absolute inset-0 bg-slate-950/80"></div>
-        </div>
+        <img
+          src="/images/jimg.png"
+          alt="Jagmal Group"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-950/80" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1
-            className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-none"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-            data-testid="about-page-heading"
-          >
-            About <span className="text-[#d4af37]">Jagmal Group</span>
-          </h1>
           <p
             className="text-xl md:text-2xl text-slate-200 leading-relaxed"
             style={{ fontFamily: 'Manrope, sans-serif' }}
@@ -59,6 +48,7 @@ const About = () => {
           </p>
         </div>
       </section>
+
 
       {/* Founder Spotlight */}
       <section className="py-20 md:py-24 bg-slate-900" data-testid="founder-section">
