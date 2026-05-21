@@ -40,17 +40,15 @@ const About = () => {
         />
         <div className="absolute inset-0 bg-slate-950/80" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <p
-            className="text-xl md:text-2xl text-slate-200 leading-relaxed"
-            style={{ fontFamily: 'Manrope, sans-serif' }}
-          >
-            A Legacy of Excellence Spanning Multiple Industries
-          </p>
+          
         </div>
+
       </section>
 
 
+
       {/* Founder Spotlight */}
+
       <section className="py-20 md:py-24 bg-slate-900" data-testid="founder-section">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
