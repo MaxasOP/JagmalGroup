@@ -65,6 +65,11 @@ const About = () => {
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
             <div>
+              <img
+                src="/images/jagmal.png"
+                alt="Raja Jagmal Chauhan"
+                className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover mb-6 mx-auto md:mx-0 border border-slate-800 shadow-lg"
+              />
               <p className="text-sm uppercase tracking-[0.3em] text-[#d4af37] mb-4 font-medium">
                 Founder Legacy
               </p>

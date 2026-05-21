@@ -90,7 +90,7 @@ const Hospitality = () => {
               className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight"
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
-              Our Culinary Spaces
+              Concept Spaces
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
