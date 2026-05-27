@@ -63,6 +63,11 @@ const Footer = () => {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link to="/philanthropy" className="hover:text-amber-500 transition-colors duration-300">
+                  Philanthropy
+                </Link>
+              </li>
             </ul>
           </div>
 
