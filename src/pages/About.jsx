@@ -1,8 +1,13 @@
 import { Award, Target, Heart, Shield } from 'lucide-react';
 import { Card } from '../components/ui/card';
 import Footer from '../components/Footer';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const About = () => {
+  useDocumentMetadata({
+    title: 'About Us',
+    description: 'Discover the legacy, vision, values, and history of Jagmal Group, established by founder Jagmal Raja Chauhan.'
+  });
   const values = [
     {
       icon: Award,

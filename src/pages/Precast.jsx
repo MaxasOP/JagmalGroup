@@ -1,8 +1,13 @@
 import { Card } from '../components/ui/card';
 import { Settings, TrendingUp, Zap, Hammer } from 'lucide-react';
 import Footer from '../components/Footer';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const Precast = () => {
+  useDocumentMetadata({
+    title: 'Precast & 3D Printing',
+    description: 'Revolutionizing modern construction with our 25,000 sq ft Precast and 3D Printing Innovation Center.'
+  });
   const features = [
     {
       icon: Hammer,

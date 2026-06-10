@@ -8,8 +8,13 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { toast } from 'sonner';
 
 import Footer from '../components/Footer';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const Contact = () => {
+  useDocumentMetadata({
+    title: 'Contact Us',
+    description: 'Get in touch with Jagmal Group at Altamount Road, Mumbai. Contact us for hotels, precast, logistics, or hospitality inquiries.'
+  });
   const [formData, setFormData] = useState({
     name: '',
     email: '',

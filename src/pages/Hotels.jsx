@@ -1,8 +1,13 @@
 import { Card } from '../components/ui/card';
 import { MapPin, BedDouble, Sparkles } from 'lucide-react';
 import Footer from '../components/Footer';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const Hotels = () => {
+  useDocumentMetadata({
+    title: 'Hotels & Luxury Suites',
+    description: 'Explore our collection of world-class luxury hotels and premium accommodations managed by Jagmal Hotels.'
+  });
   const hotels = [
     {
       name: 'Hotel Ginger',

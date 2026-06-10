@@ -40,10 +40,93 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Jagmal Group",
-        "url": "https://jagmal.com/",
-        "description": "Jagmal Group is a diversified business group operating in hospitality, logistics and construction across India."
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://jagmal.com/#organization",
+            "name": "Jagmal Group",
+            "url": "https://jagmal.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://jagmal.com/favicon-32x32.png"
+            },
+            "sameAs": [
+              "https://en.wikipedia.org/wiki/Jagmal_Raja_Chauhan"
+            ],
+            "description": "Jagmal Group is a diversified business group operating in hospitality, logistics and construction across India."
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://jagmal.com/#website",
+            "url": "https://jagmal.com/",
+            "name": "Jagmal Group",
+            "description": "Jagmal Group - Hospitality, Construction & Logistics",
+            "publisher": {
+              "@id": "https://jagmal.com/#organization"
+            }
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://jagmal.com/#navigation",
+            "name": "Jagmal Group Site Navigation",
+            "itemListElement": [
+              {
+                "@type": "SiteNavigationElement",
+                "position": 1,
+                "name": "Home",
+                "url": "https://jagmal.com/"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 2,
+                "name": "About Us",
+                "url": "https://jagmal.com/about"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 3,
+                "name": "Hotels",
+                "url": "https://jagmal.com/hotels"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 4,
+                "name": "Logistics & Industrial Parks",
+                "url": "https://jagmal.com/logistics"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 5,
+                "name": "Hospitality",
+                "url": "https://jagmal.com/hospitality"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 6,
+                "name": "Precast & 3D Printing",
+                "url": "https://jagmal.com/precast"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 7,
+                "name": "Leadership",
+                "url": "https://jagmal.com/leadership"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 8,
+                "name": "Philanthropy",
+                "url": "https://jagmal.com/philanthropy"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 9,
+                "name": "Contact Us",
+                "url": "https://jagmal.com/contact"
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>

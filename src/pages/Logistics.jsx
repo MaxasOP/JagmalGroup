@@ -1,8 +1,13 @@
 import { Card } from '../components/ui/card';
 import { Package, TrendingUp, MapPin, Zap } from 'lucide-react';
 import Footer from '../components/Footer';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const Logistics = () => {
+  useDocumentMetadata({
+    title: 'Logistics & Industrial Parks',
+    description: 'High-performance industrial parks and logistics solutions across India. Powering businesses with state-of-the-art warehousing infrastructure.'
+  });
   const features = [
     {
       icon: Package,

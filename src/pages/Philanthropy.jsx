@@ -1,6 +1,11 @@
 import Footer from '../components/Footer';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const Philanthropy = () => {
+  useDocumentMetadata({
+    title: 'Philanthropy & Social Impact',
+    description: "Learn about Jagmal Group's philanthropy efforts, including contributions to public welfare, historic events, and community development."
+  });
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Banner */}

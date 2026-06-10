@@ -1,8 +1,13 @@
 import { Card } from '../components/ui/card';
 import { Linkedin, Mail, Instagram } from 'lucide-react';
 import Footer from '../components/Footer';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const Leadership = () => {
+  useDocumentMetadata({
+    title: 'Our Leadership Team',
+    description: 'Meet the executive team driving the vision, strategy, and operations of Jagmal Group forward.'
+  });
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Banner */}

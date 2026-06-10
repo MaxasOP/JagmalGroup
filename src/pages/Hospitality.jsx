@@ -1,8 +1,13 @@
 import { Card } from '../components/ui/card';
 import { Coffee, MapPin, Clock, Sparkles } from 'lucide-react';
 import Footer from '../components/Footer';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const Hospitality = () => {
+  useDocumentMetadata({
+    title: 'Hospitality & Dining',
+    description: "Discover PraNam Cafe, a curated culinary journey along Marine Lines, Mumbai, celebrating India's rich flavors and heritage."
+  });
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Banner */}

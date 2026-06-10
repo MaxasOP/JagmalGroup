@@ -4,8 +4,13 @@ import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 import Footer from '../components/Footer';
 import CanvasSkyline from '../components/CanvasSkyline';
+import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const Home = () => {
+  useDocumentMetadata({
+    title: 'Jagmal Group - Hospitality, Construction & Logistics',
+    description: 'Jagmal Group is a diversified business group operating in hospitality, logistics and construction across India.'
+  });
   const verticals = [
     {
       title: 'Jagmal Hotels',
