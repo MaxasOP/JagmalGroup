@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jagmal.com/sitemap.xml
+Sitemap: https://www.jagmal.com/sitemap.xml

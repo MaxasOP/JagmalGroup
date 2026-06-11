@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
  */
 export default function useDocumentMetadata({ title, description }) {
   const location = useLocation();
-  const siteUrl = 'https://jagmal.com';
+  const siteUrl = 'https://www.jagmal.com';
   const defaultTitle = 'Jagmal Group - Hospitality, Construction & Logistics';
   const defaultDesc = 'Jagmal Group is a diversified business group operating in hospitality, logistics and construction across India.';
 
