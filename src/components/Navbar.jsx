@@ -1,4 +1,7 @@
-import { Link, useLocation } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
@@ -7,7 +10,7 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [businessesOpen, setBusinessesOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,7 +23,7 @@ export const Navbar = () => {
   useEffect(() => {
     setMobileOpen(false);
     setBusinessesOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -50,7 +53,7 @@ export const Navbar = () => {
         <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 md:px-8">
           <div className="flex h-16 items-center justify-between sm:h-20">
             <Link
-              to="/"
+              href="/"
               className="whitespace-nowrap text-[1.35rem] font-bold leading-none tracking-tight pl-3 md:pl-0 sm:text-2xl md:text-3xl"
               style={{ fontFamily: 'Playfair Display, serif' }}
               data-testid="navbar-logo"
@@ -63,9 +66,9 @@ export const Navbar = () => {
               {navLinks.slice(0, 2).map((link) => (
                 <Link
                   key={link.path}
-                  to={link.path}
+                  href={link.path}
                   className={`text-base font-medium transition-colors duration-300 hover:text-amber-500 ${
-                    location.pathname === link.path ? 'text-amber-500' : 'text-slate-200'
+                    pathname === link.path ? 'text-amber-500' : 'text-slate-200'
                   }`}
                 >
                   {link.name}
@@ -81,9 +84,9 @@ export const Navbar = () => {
                   {businessLinks.map((link) => (
                     <Link
                       key={link.path}
-                      to={link.path}
+                      href={link.path}
                       className={`block rounded-md px-3 py-2 text-sm transition-colors duration-200 hover:bg-slate-800 hover:text-amber-500 ${
-                        location.pathname === link.path ? 'text-amber-500' : 'text-slate-300'
+                        pathname === link.path ? 'text-amber-500' : 'text-slate-300'
                       }`}
                     >
                       {link.name}
@@ -95,9 +98,9 @@ export const Navbar = () => {
               {navLinks.slice(2).map((link) => (
                 <Link
                   key={link.path}
-                  to={link.path}
+                  href={link.path}
                   className={`text-base font-medium transition-colors duration-300 hover:text-amber-500 ${
-                    location.pathname === link.path ? 'text-amber-500' : 'text-slate-200'
+                    pathname === link.path ? 'text-amber-500' : 'text-slate-200'
                   }`}
                 >
                   {link.name}
@@ -130,7 +133,7 @@ export const Navbar = () => {
             <div className="flex flex-col space-y-2">
               {/* Home */}
               <Link
-                to="/"
+                href="/"
                 onClick={() => setMobileOpen(false)}
                 className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
               >
@@ -139,7 +142,7 @@ export const Navbar = () => {
               
               {/* About Us */}
               <Link
-                to="/about"
+                href="/about"
                 onClick={() => setMobileOpen(false)}
                 className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
               >
@@ -161,7 +164,7 @@ export const Navbar = () => {
                     {businessLinks.map((link) => (
                       <Link
                         key={link.path}
-                        to={link.path}
+                        href={link.path}
                         onClick={() => {
                           setMobileOpen(false);
                           setBusinessesOpen(false);
@@ -177,7 +180,7 @@ export const Navbar = () => {
               
               {/* Leadership */}
               <Link
-                to="/leadership"
+                href="/leadership"
                 onClick={() => setMobileOpen(false)}
                 className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
               >
@@ -186,7 +189,7 @@ export const Navbar = () => {
               
               {/* Philanthropy */}
               <Link
-                to="/philanthropy"
+                href="/philanthropy"
                 onClick={() => setMobileOpen(false)}
                 className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
               >
@@ -195,7 +198,7 @@ export const Navbar = () => {
               
               {/* Contact */}
               <Link
-                to="/contact"
+                href="/contact"
                 onClick={() => setMobileOpen(false)}
                 className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
               >
@@ -208,5 +211,3 @@ export const Navbar = () => {
     </>
   );
 };
-
-
