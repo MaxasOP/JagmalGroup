@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/philanthropy/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0s13g9i._.js")
+R.c("server/chunks/ssr/node_modules_next_dist_esm_build_templates_app-page_0cvkml4.js")
+R.c("server/chunks/ssr/[root-of-the-server]__125ijrn._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0100oqz._.js")
+R.c("server/chunks/ssr/src_0fg3h_n._.js")
+R.c("server/chunks/ssr/node_modules_next_dist_client_components_0wpq8j3._.js")
+R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_forbidden_0symwr9.js")
+R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_unauthorized_0l_sp0x.js")
+R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_global-error_0-o-goa.js")
+R.c("server/chunks/ssr/_next-internal_server_app_philanthropy_page_actions_1dw607j.js")
+R.m(93831)
+module.exports=R.m(93831).exports

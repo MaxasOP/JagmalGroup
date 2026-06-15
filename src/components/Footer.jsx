@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
@@ -17,8 +17,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <Link to="/" className="text-2xl font-bold tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-<span className="text-slate-100">JAGMAL</span>
+            <Link href="/" className="text-2xl font-bold tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <span className="text-slate-100">JAGMAL</span>
               <span className="text-amber-500"> GROUP</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed">
@@ -44,27 +44,27 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="hover:text-amber-500 transition-colors duration-300">
+                <Link href="/" className="hover:text-amber-500 transition-colors duration-300">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-amber-500 transition-colors duration-300">
+                <Link href="/about" className="hover:text-amber-500 transition-colors duration-300">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/leadership" className="hover:text-amber-500 transition-colors duration-300">
+                <Link href="/leadership" className="hover:text-amber-500 transition-colors duration-300">
                   Leadership
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-amber-500 transition-colors duration-300">
+                <Link href="/contact" className="hover:text-amber-500 transition-colors duration-300">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link to="/philanthropy" className="hover:text-amber-500 transition-colors duration-300">
+                <Link href="/philanthropy" className="hover:text-amber-500 transition-colors duration-300">
                   Philanthropy
                 </Link>
               </li>
@@ -79,7 +79,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {businessLinks.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="hover:text-amber-500 transition-colors duration-300">
+                  <Link href={link.path} className="hover:text-amber-500 transition-colors duration-300">
                     {link.name}
                   </Link>
                 </li>
@@ -99,7 +99,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-amber-500 flex-shrink-0" />
-<span>+91 9839921921</span>
+                <span>+91 9839921921</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-amber-500 flex-shrink-0" />
@@ -119,4 +119,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

@@ -1,0 +1,13 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/contact/page": "/contact",
+  "/hospitality/page": "/hospitality",
+  "/hotels/page": "/hotels",
+  "/leadership/page": "/leadership",
+  "/logistics/page": "/logistics",
+  "/page": "/",
+  "/philanthropy/page": "/philanthropy",
+  "/precast/page": "/precast"
+}
