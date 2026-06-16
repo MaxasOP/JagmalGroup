@@ -102,10 +102,11 @@ const Home = () => {
             {verticals.map((vertical, index) => {
               const Icon = vertical.icon;
               return (
-                <Card key={index} className={`${vertical.span} group relative overflow-hidden rounded-xl border border-slate-800 hover:border-[#d4af37]/50 transition-all duration-500 cursor-pointer hover:shadow-2xl`} data-testid={`vertical-card-${vertical.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                <Card key={index} className={`${vertical.span} group group/card relative overflow-hidden rounded-xl border border-slate-800 hover:border-[#d4af37]/50 transition-all duration-500 cursor-pointer hover:shadow-2xl`} data-testid={`vertical-card-${vertical.title.toLowerCase().replace(/\s+/g, '-')}`}>
                   <Link href={vertical.path} className="block h-full">
                     <div className="relative h-full min-h-[300px] md:min-h-[400px]">
-                      <Image src={vertical.image} alt={vertical.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <Image src={vertical.image} alt={vertical.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-[1.02]" />
+                      <div className="absolute inset-0 translate-x-[-100%] group-hover/card:translate-x-[100%] transition-transform duration-1000 ease-out pointer-events-none" style={{ backgroundImage: 'linear-gradient(120deg, transparent, rgba(255,255,255,0.06), rgba(255,255,255,0.1), rgba(255,255,255,0.06), transparent)' }} />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-8">
                         <div className="flex items-center mb-4">
