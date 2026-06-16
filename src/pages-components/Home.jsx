@@ -77,11 +77,14 @@ const Home = () => {
 
             <Button
               size="lg"
-              className="mt-10 rounded-full border border-[#bda35e] bg-[#bda35e]/10 px-8 py-6 text-base font-semibold text-[#e9d6ab] transition-all duration-300 hover:bg-[#bda35e]/20 hover:text-[#f5e8ca]"
+              className="group relative mt-10 overflow-hidden rounded-full border border-[#bda35e] bg-[#bda35e]/10 px-8 py-6 text-base font-semibold text-[#e9d6ab] transition-all duration-300 hover:bg-[#bda35e]/20 hover:text-[#f5e8ca]"
               onClick={() => document.getElementById('verticals').scrollIntoView({ behavior: 'smooth' })}
               data-testid="hero-cta-button"
             >
-              Explore Our World <ArrowRight className="ml-2 h-5 w-5" />
+              <span className="relative z-10 flex items-center">
+                Explore Our World <ArrowRight className="ml-2 h-5 w-5" />
+              </span>
+              <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out pointer-events-none" style={{ backgroundImage: 'linear-gradient(120deg, transparent, rgba(255,255,255,0.06), rgba(255,255,255,0.1), rgba(255,255,255,0.06), transparent)' }} />
             </Button>
           </div>
         </div>
