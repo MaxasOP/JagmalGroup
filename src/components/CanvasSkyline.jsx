@@ -179,11 +179,8 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
             const wx = bx + padX + col * (winW + 2);
             const wy = by + bh * 0.05 + row * (winH + 3);
             const wm = 0.3 + ((idx * 17) % 100) / 250;
-            const seed = ((bi * 13 + row * 29 + col * 47) % 100) / 100;
-            const pulse = 0.4 + 0.6 * Math.sin(t * 1.5 + seed * 10);
-            const baseAlpha = 0.12 + wm * 0.2;
-            const alpha = baseAlpha * pulse;
-            ctx.fillStyle = `rgba(255,${Math.floor(190 + wm * 40)},${Math.floor(80 + wm * 40)},${alpha})`;
+            const pulse = 0.4 + 0.6 * Math.sin(t * 1.5 + (bi * 7 + idx) * 10);
+            ctx.fillStyle = `rgba(255,${Math.floor(190 + wm * 40)},${Math.floor(80 + wm * 40)},${(0.12 + wm * 0.2) * pulse})`;
             ctx.fillRect(wx, wy, winW, winH);
           }
         }
