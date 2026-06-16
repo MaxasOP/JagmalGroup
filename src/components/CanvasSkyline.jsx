@@ -96,7 +96,7 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
       ctx.fillRect(0, 0, w, h);
 
       // Horizon ambient glow
-      const grd = ctx.createLinearGradient(0, h * 0.35, 0, h * 0.68);
+      const grd = ctx.createLinearGradient(0, h * 0.35, 0, h * 0.78);
       grd.addColorStop(0,   "rgba(201,130,40,0.0)");
       grd.addColorStop(0.5, "rgba(201,130,40,0.025)");
       grd.addColorStop(1,   "rgba(8,7,5,0)");
@@ -120,7 +120,7 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
         ctx.restore();
       });
 
-      const groundY = h * 0.68;
+      const groundY = h * 0.78;
 
       // Buildings (sorted back-to-front by height)
       const sorted = [...BUILDINGS]
@@ -131,7 +131,7 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
         const bi  = b._i;
         const bx  = b.x * w;
         const bw  = Math.max(b.w * w, 18);
-        const bh  = b.h * h * 0.65;
+        const bh  = b.h * h * 0.75;
         const by  = groundY - bh;
         const dep = b.h;
 
@@ -179,8 +179,8 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
             const wy = by + bh * 0.05 + row * (winH + 3);
             // Base warmth per window (static identity — which window is dim vs bright)
             const wm = 0.3 + ((idx * 17) % 100) / 250;
-            // Slow, organic breathing — each window on its own phase & speed
-            const speed = 0.6 + ((idx * 13) % 50) / 100;   // 0.6–1.1 rad/s
+            // Slow, organic breathing — each window on its own phase & speed (sped up by 20%)
+            const speed = (0.6 + ((idx * 13) % 50) / 100) * 1.2;
             const phase = (idx * 2.39996) % (Math.PI * 2);  // golden-angle scatter
             const pulse = 0.4 + 0.6 * (0.5 + 0.5 * Math.sin(t * speed + phase));
             // Apply pulse to warmth
