@@ -75,13 +75,12 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
     const ctx = canvas.getContext("2d");
 
     const resize = () => {
-      canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
       setIsMobile(window.innerWidth < 768);
     };
     resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(canvas);
+    window.addEventListener("resize", resize);
 
     let t = 0;
 
@@ -242,7 +241,7 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
 
     return () => {
       cancelAnimationFrame(rafRef.current);
-      ro.disconnect();
+      window.removeEventListener("resize", resize);
     };
   }, []);
 
