@@ -179,8 +179,10 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
             const wx = bx + padX + col * (winW + 2);
             const wy = by + bh * 0.05 + row * (winH + 3);
             const wm = 0.3 + ((idx * 17) % 100) / 250;
-            const pulse = 0.4 + 0.6 * Math.sin(t * 1.5 + (bi * 7 + idx) * 10);
-            ctx.fillStyle = `rgba(255,${Math.floor(190 + wm * 40)},${Math.floor(80 + wm * 40)},${(0.12 + wm * 0.2) * pulse})`;
+            // A slow, organic breathing effect (oscillating brightness and warmth)
+            const pulse = 0.85 + 0.15 * Math.sin(t * 1.0 + idx * 0.3);
+            const dynamicWm = wm * pulse;
+            ctx.fillStyle = `rgba(255,${Math.floor(190 + dynamicWm * 40)},${Math.floor(80 + dynamicWm * 40)},${0.12 + dynamicWm * 0.2})`;
             ctx.fillRect(wx, wy, winW, winH);
           }
         }
