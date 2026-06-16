@@ -75,9 +75,11 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
     const ctx = canvas.getContext("2d");
 
     const resize = () => {
-      canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
-      setIsMobile(window.innerWidth < 768);
+      if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+        setIsMobile(window.innerWidth < 768);
+      }
     };
     resize();
     window.addEventListener("resize", resize);
@@ -122,16 +124,22 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
 
       const groundY = h * 0.78;
 
+      const isMobileLayout = w < 768;
+
       // Buildings (sorted back-to-front by height)
       const sorted = [...BUILDINGS]
         .map((b, i) => ({ ...b, _i: i }))
         .sort((a, b) => a.h - b.h);
 
-      sorted.forEach((b) => {
+      const visibleBuildings = isMobileLayout
+        ? sorted.filter((b) => b._i % 2 === 0)
+        : sorted;
+
+      visibleBuildings.forEach((b) => {
         const bi  = b._i;
         const bx  = b.x * w;
         const bw  = Math.max(b.w * w, 18);
-        const bh  = b.h * h * 0.75;
+        const bh  = b.h * h * (isMobileLayout ? 0.52 : 0.75);
         const by  = groundY - bh;
         const dep = b.h;
 

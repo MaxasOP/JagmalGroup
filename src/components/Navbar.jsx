@@ -156,7 +156,7 @@ export const Navbar = () => {
         `}} />
 
         <div className="flex-1 w-full max-w-lg mx-auto px-6 pt-24 pb-8 flex flex-col justify-center">
-          <div className="space-y-6 w-full">
+          <div className="space-y-4 w-full">
             {[
               { name: 'Home', path: '/' },
               { name: 'About Us', path: '/about' },
@@ -171,7 +171,7 @@ export const Navbar = () => {
                   onClick={() => setMobileOpen(false)}
                   className="group flex items-baseline py-1.5"
                 >
-                  <span className="text-3xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
+                  <span className="text-xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
                     {link.name}
                   </span>
                 </Link>
@@ -188,10 +188,10 @@ export const Navbar = () => {
                 onClick={() => setBusinessesOpen(!businessesOpen)}
                 className="group flex items-baseline justify-between w-full py-1.5 text-left focus:outline-none"
               >
-                <span className="text-3xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
+                <span className="text-xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
                   Our Businesses
                 </span>
-                <ChevronDown className={`h-6 w-6 text-slate-400 transition-transform duration-300 ${businessesOpen ? 'rotate-180 text-amber-500' : ''}`} />
+                <ChevronDown className={`h-5 w-5 text-slate-400 transition-transform duration-300 ${businessesOpen ? 'rotate-180 text-amber-500' : ''}`} />
               </button>
               
               <div className={`overflow-hidden transition-all duration-500 ${businessesOpen ? 'max-h-64 mt-3 opacity-100' : 'max-h-0 opacity-0'}`}>
@@ -204,7 +204,7 @@ export const Navbar = () => {
                         setMobileOpen(false);
                         setBusinessesOpen(false);
                       }}
-                      className="block text-lg font-light text-slate-400 transition-colors duration-300 hover:text-amber-500"
+                      className="block text-base font-light text-slate-400 transition-colors duration-300 hover:text-amber-500"
                     >
                       {link.name}
                     </Link>
@@ -229,7 +229,7 @@ export const Navbar = () => {
                   onClick={() => setMobileOpen(false)}
                   className="group flex items-baseline py-1.5"
                 >
-                  <span className="text-3xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
+                  <span className="text-xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
                     {link.name}
                   </span>
                 </Link>
@@ -254,7 +254,7 @@ export const Navbar = () => {
           <div className="flex gap-4 text-xs text-slate-400">
             <a href="mailto:info@jagmalgroup.com" className="hover:text-amber-500 transition-colors">info@jagmalgroup.com</a>
             <span>•</span>
-            <span className="text-slate-500">Est. 1972</span>
+            <span className="text-slate-500">Est. 2014</span>
           </div>
         </div>
       </div>
