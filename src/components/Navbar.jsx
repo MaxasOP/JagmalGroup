@@ -111,7 +111,7 @@ export const Navbar = () => {
             <div className="flex items-center md:hidden">
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="relative h-12 w-12 flex flex-col items-center justify-center rounded-full border border-slate-700/70 bg-slate-800/40 text-slate-100 shadow-lg backdrop-blur-sm hover:bg-slate-700/60 hover:text-amber-500 transition-all duration-300 group focus:outline-none z-50"
+                className="relative h-12 w-12 flex flex-col items-center justify-center text-slate-100 hover:text-amber-500 transition-all duration-300 group focus:outline-none z-50"
                 aria-label="Toggle Menu"
                 data-testid="mobile-menu-trigger"
               >
@@ -131,7 +131,7 @@ export const Navbar = () => {
 
       {/* Fullscreen Overlay Menu (x.ai inspired) */}
       <div
-        className={`fixed inset-0 z-40 bg-slate-950/98 backdrop-blur-2xl transition-all duration-500 ease-out md:hidden flex flex-col justify-between ${
+        className={`fixed inset-0 z-40 bg-slate-950/98 backdrop-blur-2xl transition-all duration-500 ease-out md:hidden flex flex-col overflow-y-auto ${
           mobileOpen 
             ? 'opacity-100 pointer-events-auto translate-y-0' 
             : 'opacity-0 pointer-events-none -translate-y-4'
@@ -155,11 +155,11 @@ export const Navbar = () => {
           }
         `}} />
 
-        <div className="flex-1 overflow-y-auto px-6 pt-24 pb-8 flex flex-col justify-center">
-          <div className="w-full max-w-lg mx-auto space-y-6">
+        <div className="flex-1 w-full max-w-lg mx-auto px-6 pt-24 pb-8 flex flex-col justify-center">
+          <div className="space-y-6 w-full">
             {[
-              { num: '01', name: 'Home', path: '/' },
-              { num: '02', name: 'About Us', path: '/about' },
+              { name: 'Home', path: '/' },
+              { name: 'About Us', path: '/about' },
             ].map((link, idx) => (
               <div 
                 key={link.path}
@@ -169,9 +169,8 @@ export const Navbar = () => {
                 <Link
                   href={link.path}
                   onClick={() => setMobileOpen(false)}
-                  className="group flex items-baseline gap-4 py-1.5"
+                  className="group flex items-baseline py-1.5"
                 >
-                  <span className="text-xs font-mono text-amber-500/80 tracking-widest">{link.num}</span>
                   <span className="text-3xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
                     {link.name}
                   </span>
@@ -189,17 +188,14 @@ export const Navbar = () => {
                 onClick={() => setBusinessesOpen(!businessesOpen)}
                 className="group flex items-baseline justify-between w-full py-1.5 text-left focus:outline-none"
               >
-                <div className="flex items-baseline gap-4">
-                  <span className="text-xs font-mono text-amber-500/80 tracking-widest">03</span>
-                  <span className="text-3xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
-                    Our Businesses
-                  </span>
-                </div>
+                <span className="text-3xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
+                  Our Businesses
+                </span>
                 <ChevronDown className={`h-6 w-6 text-slate-400 transition-transform duration-300 ${businessesOpen ? 'rotate-180 text-amber-500' : ''}`} />
               </button>
               
               <div className={`overflow-hidden transition-all duration-500 ${businessesOpen ? 'max-h-64 mt-3 opacity-100' : 'max-h-0 opacity-0'}`}>
-                <div className="ml-8 border-l border-slate-800 pl-4 space-y-3">
+                <div className="ml-4 border-l border-slate-800 pl-4 space-y-3">
                   {businessLinks.map((link) => (
                     <Link
                       key={link.path}
@@ -219,9 +215,9 @@ export const Navbar = () => {
             </div>
 
             {[
-              { num: '04', name: 'Leadership', path: '/leadership' },
-              { num: '05', name: 'Philanthropy', path: '/philanthropy' },
-              { num: '06', name: 'Contact', path: '/contact' },
+              { name: 'Leadership', path: '/leadership' },
+              { name: 'Philanthropy', path: '/philanthropy' },
+              { name: 'Contact', path: '/contact' },
             ].map((link, idx) => (
               <div 
                 key={link.path}
@@ -231,9 +227,8 @@ export const Navbar = () => {
                 <Link
                   href={link.path}
                   onClick={() => setMobileOpen(false)}
-                  className="group flex items-baseline gap-4 py-1.5"
+                  className="group flex items-baseline py-1.5"
                 >
-                  <span className="text-xs font-mono text-amber-500/80 tracking-widest">{link.num}</span>
                   <span className="text-3xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
                     {link.name}
                   </span>
@@ -246,7 +241,7 @@ export const Navbar = () => {
 
         {/* Footer section of overlay menu */}
         <div 
-          className="border-t border-slate-900 bg-slate-950/60 p-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left animate-menu-item"
+          className="border-t border-slate-900 bg-slate-950/60 p-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left mt-auto animate-menu-item"
           style={{ animationDelay: '420ms', animationPlayState: mobileOpen ? 'running' : 'paused' }}
         >
           <div>
