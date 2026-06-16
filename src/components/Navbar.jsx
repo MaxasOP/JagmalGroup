@@ -109,105 +109,160 @@ export const Navbar = () => {
             </div>
 
             <div className="flex items-center md:hidden">
-              <Button
-                variant="ghost"
-                size="icon"
+              <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="h-12 w-12 rounded-full border border-slate-700/70 bg-slate-800/40 p-0 text-slate-100 shadow-lg backdrop-blur-sm hover:bg-slate-700/60 hover:text-amber-500"
+                className="relative h-12 w-12 flex flex-col items-center justify-center rounded-full border border-slate-700/70 bg-slate-800/40 text-slate-100 shadow-lg backdrop-blur-sm hover:bg-slate-700/60 hover:text-amber-500 transition-all duration-300 group focus:outline-none z-50"
+                aria-label="Toggle Menu"
                 data-testid="mobile-menu-trigger"
               >
-                {mobileOpen ? (
-                  <X className="h-8 w-8" strokeWidth={2.75} />
-                ) : (
-                  <Menu className="h-8 w-8" strokeWidth={2.75} />
-                )}
-              </Button>
+                <div className="flex flex-col gap-1.5 w-6 items-end justify-center">
+                  <span className={`h-0.5 bg-current transition-all duration-300 origin-center ${
+                    mobileOpen ? 'rotate-45 translate-y-[4px] w-6' : 'w-6 group-hover:w-4'
+                  }`} />
+                  <span className={`h-0.5 bg-current transition-all duration-300 origin-center ${
+                    mobileOpen ? '-rotate-45 -translate-y-[4px] w-6' : 'w-4 group-hover:w-6'
+                  }`} />
+                </div>
+              </button>
             </div>
           </div>
         </div>
       </nav>
 
-      {mobileOpen && (
-        <div className="fixed inset-x-0 top-16 z-40 border-b border-slate-800 bg-slate-900 shadow-lg sm:top-20 md:hidden">
-          <div className="mx-auto w-full max-w-screen-xl px-4 py-4 sm:px-6 sm:py-6">
-            <div className="flex flex-col space-y-2">
-              {/* Home */}
-              <Link
-                href="/"
-                onClick={() => setMobileOpen(false)}
-                className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
+      {/* Fullscreen Overlay Menu (x.ai inspired) */}
+      <div
+        className={`fixed inset-0 z-40 bg-slate-950/98 backdrop-blur-2xl transition-all duration-500 ease-out md:hidden flex flex-col justify-between ${
+          mobileOpen 
+            ? 'opacity-100 pointer-events-auto translate-y-0' 
+            : 'opacity-0 pointer-events-none -translate-y-4'
+        }`}
+      >
+        {/* Style block for animations */}
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes slideUpFade {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-menu-item {
+            animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+          }
+        `}} />
+
+        <div className="flex-1 overflow-y-auto px-6 pt-24 pb-8 flex flex-col justify-center">
+          <div className="w-full max-w-lg mx-auto space-y-6">
+            {[
+              { num: '01', name: 'Home', path: '/' },
+              { num: '02', name: 'About Us', path: '/about' },
+            ].map((link, idx) => (
+              <div 
+                key={link.path}
+                className="animate-menu-item"
+                style={{ animationDelay: `${idx * 70}ms`, animationPlayState: mobileOpen ? 'running' : 'paused' }}
               >
-                Home
-              </Link>
-              
-              {/* About Us */}
-              <Link
-                href="/about"
-                onClick={() => setMobileOpen(false)}
-                className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
-              >
-                About Us
-              </Link>
-              
-              {/* Our Businesses - Dropdown */}
-              <div className="py-2">
-                <button
-                  onClick={() => setBusinessesOpen(!businessesOpen)}
-                  className="flex items-center justify-between w-full text-lg font-medium text-slate-300 hover:text-amber-500 transition-colors duration-300"
+                <Link
+                  href={link.path}
+                  onClick={() => setMobileOpen(false)}
+                  className="group flex items-baseline gap-4 py-1.5"
                 >
-                  <span>Our Businesses</span>
-                  <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${businessesOpen ? 'rotate-180' : ''}`} />
-                </button>
-                
-                {businessesOpen && (
-                  <div className="ml-4 mt-2 space-y-2 border-l-2 border-slate-700 pl-4">
-                    {businessLinks.map((link) => (
-                      <Link
-                        key={link.path}
-                        href={link.path}
-                        onClick={() => {
-                          setMobileOpen(false);
-                          setBusinessesOpen(false);
-                        }}
-                        className="block text-base font-medium transition-colors duration-300 py-2 text-slate-400 hover:text-amber-500"
-                      >
-                        {link.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                  <span className="text-xs font-mono text-amber-500/80 tracking-widest">{link.num}</span>
+                  <span className="text-3xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
+                    {link.name}
+                  </span>
+                </Link>
+                <div className="h-[1px] bg-gradient-to-r from-slate-800 to-transparent mt-2" />
               </div>
-              
-              {/* Leadership */}
-              <Link
-                href="/leadership"
-                onClick={() => setMobileOpen(false)}
-                className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
+            ))}
+
+            {/* Collapsible Businesses */}
+            <div 
+              className="animate-menu-item"
+              style={{ animationDelay: '140ms', animationPlayState: mobileOpen ? 'running' : 'paused' }}
+            >
+              <button
+                onClick={() => setBusinessesOpen(!businessesOpen)}
+                className="group flex items-baseline justify-between w-full py-1.5 text-left focus:outline-none"
               >
-                Leadership
-              </Link>
+                <div className="flex items-baseline gap-4">
+                  <span className="text-xs font-mono text-amber-500/80 tracking-widest">03</span>
+                  <span className="text-3xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
+                    Our Businesses
+                  </span>
+                </div>
+                <ChevronDown className={`h-6 w-6 text-slate-400 transition-transform duration-300 ${businessesOpen ? 'rotate-180 text-amber-500' : ''}`} />
+              </button>
               
-              {/* Philanthropy */}
-              <Link
-                href="/philanthropy"
-                onClick={() => setMobileOpen(false)}
-                className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
-              >
-                Philanthropy
-              </Link>
-              
-              {/* Contact */}
-              <Link
-                href="/contact"
-                onClick={() => setMobileOpen(false)}
-                className="text-lg font-medium transition-colors duration-300 py-2 text-slate-300 hover:text-amber-500"
-              >
-                Contact
-              </Link>
+              <div className={`overflow-hidden transition-all duration-500 ${businessesOpen ? 'max-h-64 mt-3 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className="ml-8 border-l border-slate-800 pl-4 space-y-3">
+                  {businessLinks.map((link) => (
+                    <Link
+                      key={link.path}
+                      href={link.path}
+                      onClick={() => {
+                        setMobileOpen(false);
+                        setBusinessesOpen(false);
+                      }}
+                      className="block text-lg font-light text-slate-400 transition-colors duration-300 hover:text-amber-500"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div className="h-[1px] bg-gradient-to-r from-slate-800 to-transparent mt-2" />
             </div>
+
+            {[
+              { num: '04', name: 'Leadership', path: '/leadership' },
+              { num: '05', name: 'Philanthropy', path: '/philanthropy' },
+              { num: '06', name: 'Contact', path: '/contact' },
+            ].map((link, idx) => (
+              <div 
+                key={link.path}
+                className="animate-menu-item"
+                style={{ animationDelay: `${(idx + 3) * 70}ms`, animationPlayState: mobileOpen ? 'running' : 'paused' }}
+              >
+                <Link
+                  href={link.path}
+                  onClick={() => setMobileOpen(false)}
+                  className="group flex items-baseline gap-4 py-1.5"
+                >
+                  <span className="text-xs font-mono text-amber-500/80 tracking-widest">{link.num}</span>
+                  <span className="text-3xl font-light text-slate-100 tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber-500">
+                    {link.name}
+                  </span>
+                </Link>
+                <div className="h-[1px] bg-gradient-to-r from-slate-800 to-transparent mt-2" />
+              </div>
+            ))}
           </div>
         </div>
-      )}
+
+        {/* Footer section of overlay menu */}
+        <div 
+          className="border-t border-slate-900 bg-slate-950/60 p-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left animate-menu-item"
+          style={{ animationDelay: '420ms', animationPlayState: mobileOpen ? 'running' : 'paused' }}
+        >
+          <div>
+            <div className="text-[1.1rem] font-bold tracking-tight mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <span className="text-white">JAGMAL</span>
+              <span className="text-amber-500"> GROUP</span>
+            </div>
+            <p className="text-xs text-slate-500">Excellence across industries.</p>
+          </div>
+          <div className="flex gap-4 text-xs text-slate-400">
+            <a href="mailto:info@jagmalgroup.com" className="hover:text-amber-500 transition-colors">info@jagmalgroup.com</a>
+            <span>•</span>
+            <span className="text-slate-500">Est. 1972</span>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
