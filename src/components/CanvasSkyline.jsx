@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const BUILDINGS = [
   { x: 0.01, w: 0.04, h: 0.28, floors: 7,  lit: 0.3  },
@@ -67,6 +67,7 @@ const PARTICLES = Array.from({ length: 80 }, () => ({
 export default function CanvasSkyline({ style = {}, className = "" }) {
   const canvasRef = useRef(null);
   const rafRef    = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -76,6 +77,7 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
     const resize = () => {
       canvas.width  = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
+      setIsMobile(window.innerWidth < 768);
     };
     resize();
     const ro = new ResizeObserver(resize);
@@ -221,6 +223,14 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
         ctx.fill();
       });
 
+      // Final Atmospheric Haze (Fog at the bottom to blend seamlessly)
+      const haze = ctx.createLinearGradient(0, groundY - 100, 0, h);
+      haze.addColorStop(0, "rgba(8,7,5,0)");
+      haze.addColorStop(0.5, "rgba(25,20,15,0.4)");
+      haze.addColorStop(1, "#080705");
+      ctx.fillStyle = haze;
+      ctx.fillRect(0, groundY - 100, w, h - (groundY - 100));
+
       t += 0.016;
       rafRef.current = requestAnimationFrame(draw);
     };
@@ -234,15 +244,33 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className={className}
-      style={{
-        display: "block",
-        width: "100%",
-        height: "100%",
-        ...style,
-      }}
-    />
+    <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+      <canvas
+        ref={canvasRef}
+        className={className}
+        style={{
+          display: "block",
+          width: "100%",
+          height: "100%",
+          ...style,
+        }}
+      />
+      {/* SVG Grain Overlay */}
+      {!isMobile && (
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.04]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`
+          }}
+        />
+      )}
+      {/* Vignette Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.6) 100%)'
+        }}
+      />
+    </div>
   );
 }
