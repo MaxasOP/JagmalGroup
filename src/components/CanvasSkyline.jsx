@@ -177,11 +177,17 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
             if (!ws[idx % ws.length]) continue;
             const wx = bx + padX + col * (winW + 2);
             const wy = by + bh * 0.05 + row * (winH + 3);
+            // Base warmth per window (static identity — which window is dim vs bright)
             const wm = 0.3 + ((idx * 17) % 100) / 250;
-            // A slow, organic breathing effect (oscillating brightness and warmth)
-            const pulse = 0.85 + 0.15 * Math.sin(t * 1.0 + idx * 0.3);
-            const dynamicWm = wm * pulse;
-            ctx.fillStyle = `rgba(255,${Math.floor(190 + dynamicWm * 40)},${Math.floor(80 + dynamicWm * 40)},${0.12 + dynamicWm * 0.2})`;
+            // Slow, organic breathing — each window on its own phase & speed
+            const speed = 0.6 + ((idx * 13) % 50) / 100;   // 0.6–1.1 rad/s
+            const phase = (idx * 2.39996) % (Math.PI * 2);  // golden-angle scatter
+            const pulse = 0.4 + 0.6 * (0.5 + 0.5 * Math.sin(t * speed + phase));
+            // Apply pulse to warmth
+            const g = Math.floor(170 + wm * 60 * pulse);
+            const b2 = Math.floor(60  + wm * 50 * pulse);
+            const a = 0.15 + wm * 0.4 * pulse;
+            ctx.fillStyle = `rgba(255,${g},${b2},${a})`;
             ctx.fillRect(wx, wy, winW, winH);
           }
         }
