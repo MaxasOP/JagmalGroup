@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Building2, Warehouse, Utensils, Settings } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
@@ -104,7 +105,7 @@ const Home = () => {
                 <Card key={index} className={`${vertical.span} group relative overflow-hidden rounded-xl border border-slate-800 hover:border-[#d4af37]/50 transition-all duration-500 cursor-pointer hover:shadow-2xl`} data-testid={`vertical-card-${vertical.title.toLowerCase().replace(/\s+/g, '-')}`}>
                   <Link href={vertical.path} className="block h-full">
                     <div className="relative h-full min-h-[300px] md:min-h-[400px]">
-                      <img src={vertical.image} alt={vertical.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <Image src={vertical.image} alt={vertical.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-8">
                         <div className="flex items-center mb-4">

@@ -56,8 +56,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["Manrope", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
+        sans: ["var(--font-manrope)", "sans-serif"],
+        serif: ["var(--font-playfair)", "serif"],
       },
       keyframes: {
         "accordion-down": {

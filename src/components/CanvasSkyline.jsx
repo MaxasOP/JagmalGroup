@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // --- Configuration Data ---
 const buildings = [
@@ -55,6 +55,7 @@ const flickerSeed = (a, b, c) => {
 
 export default function EnhancedSkyline() {
   const canvasRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -62,15 +63,19 @@ export default function EnhancedSkyline() {
     const ctx = canvas.getContext('2d');
     let raf;
     let t = 0;
+    let isVisible = true;
 
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      setIsMobile(window.innerWidth < 768);
     };
     resize();
     window.addEventListener('resize', resize);
 
     const draw = () => {
+      if (!isVisible) return;
+
       const W = canvas.width;
       const H = canvas.height;
       const groundY = H * 0.72;
@@ -79,22 +84,26 @@ export default function EnhancedSkyline() {
       ctx.fillStyle = '#080705'; // Deep background
       ctx.fillRect(0, 0, W, H);
 
-      // 1. Light Shafts (V2 Style)
-      shafts.forEach((s, i) => {
-        const grad = ctx.createLinearGradient(s.x1 * W, 0, s.x2 * W, H);
-        grad.addColorStop(0, `rgba(201,162,80,${s.op * 1.2})`);
-        grad.addColorStop(0.5, `rgba(201,162,80,${s.op * 0.4})`);
-        grad.addColorStop(1, 'rgba(201,162,80,0)');
-        ctx.save();
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 50 + i * 10;
-        ctx.globalAlpha = 0.7 + 0.3 * Math.sin(t * 0.5 + i);
-        ctx.beginPath();
-        ctx.moveTo(s.x1 * W, 0);
-        ctx.lineTo(s.x2 * W, H);
-        ctx.stroke();
-        ctx.restore();
-      });
+      const checkMobile = W < 768;
+
+      // 1. Light Shafts (V2 Style) - Skip on mobile to save GPU cycles
+      if (!checkMobile) {
+        shafts.forEach((s, i) => {
+          const grad = ctx.createLinearGradient(s.x1 * W, 0, s.x2 * W, H);
+          grad.addColorStop(0, `rgba(201,162,80,${s.op * 1.2})`);
+          grad.addColorStop(0.5, `rgba(201,162,80,${s.op * 0.4})`);
+          grad.addColorStop(1, 'rgba(201,162,80,0)');
+          ctx.save();
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 50 + i * 10;
+          ctx.globalAlpha = 0.7 + 0.3 * Math.sin(t * 0.5 + i);
+          ctx.beginPath();
+          ctx.moveTo(s.x1 * W, 0);
+          ctx.lineTo(s.x2 * W, H);
+          ctx.stroke();
+          ctx.restore();
+        });
+      }
 
       // 2. Perspective Grid (V1 Style)
       ctx.strokeStyle = 'rgba(120,95,55,0.03)';
@@ -106,8 +115,10 @@ export default function EnhancedSkyline() {
         ctx.stroke();
       }
 
-      // 3. Buildings
-      buildings.forEach((b, bi) => {
+      // 3. Buildings (Halve building render list on mobile)
+      const activeBuildings = checkMobile ? buildings.filter((_, idx) => idx % 2 === 0) : buildings;
+
+      activeBuildings.forEach((b, bi) => {
         const bx = b.x * W;
         const bw = Math.max(b.w * W, 20);
         const bh = b.h * H * 0.6;
@@ -141,9 +152,9 @@ export default function EnhancedSkyline() {
           ctx.fill();
         }
 
-        // 4. Pulsing Windows (V2 Flicker Math)
-        const rows = b.floors;
-        const cols = Math.max(2, Math.floor(bw / 12));
+        // 4. Pulsing Windows (V2 Flicker Math) - reduce window resolution on mobile
+        const rows = checkMobile ? Math.ceil(b.floors / 2) : b.floors;
+        const cols = Math.max(2, Math.floor(bw / (checkMobile ? 18 : 12)));
         const winW = (bw * 0.7) / cols;
         const winH = (bh * 0.8) / rows;
         const padX = (bw - (cols * winW)) / 2;
@@ -164,8 +175,9 @@ export default function EnhancedSkyline() {
         }
       });
 
-      // 5. Particles (Ambient Dust)
-      particles.forEach(p => {
+      // 5. Particles (Ambient Dust) - limit to 15 on mobile
+      const activeParticles = checkMobile ? particles.slice(0, 15) : particles;
+      activeParticles.forEach(p => {
         const px = ((p.x + t * p.speed) % 1) * W;
         const py = ((p.y - t * p.speed + 1) % 1) * H;
         const pulse = 0.5 + 0.5 * Math.sin(t * 1.2 + p.phase);
@@ -187,10 +199,22 @@ export default function EnhancedSkyline() {
       raf = requestAnimationFrame(draw);
     };
 
+    // Use Intersection Observer to only animate when the canvas is inside the viewport
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible) {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(draw);
+      }
+    }, { threshold: 0.01 });
+
+    observer.observe(canvas);
+
     draw();
     return () => {
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(raf);
+      observer.disconnect();
     };
   }, []);
 
@@ -198,8 +222,8 @@ export default function EnhancedSkyline() {
     <div style={styles.container}>
       <canvas ref={canvasRef} style={styles.canvas} />
       
-      {/* SVG Grain Overlay from V1 */}
-      <div style={styles.grain} />
+      {/* SVG Grain Overlay from V1 - Disabled on mobile to prevent massive paint re-calculations */}
+      {!isMobile && <div style={styles.grain} />}
       
       {/* Vignette Overlay from V1 */}
       <div style={styles.vignette} />
