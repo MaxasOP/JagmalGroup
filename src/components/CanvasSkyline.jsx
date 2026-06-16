@@ -1,272 +1,248 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from "react";
 
-// --- Configuration Data ---
-const buildings = [
-  { x:.01, w:.04, h:.28, floors:7,  lit:.3  },
-  { x:.05, w:.03, h:.18, floors:5,  lit:.25 },
-  { x:.07, w:.05, h:.42, floors:10, lit:.35 },
-  { x:.12, w:.03, h:.22, floors:6,  lit:.2  },
-  { x:.15, w:.06, h:.55, floors:13, lit:.4  },
-  { x:.20, w:.02, h:.15, floors:4,  lit:.15 },
-  { x:.22, w:.04, h:.35, floors:9,  lit:.3  },
-  { x:.27, w:.05, h:.50, floors:12, lit:.45 },
-  { x:.31, w:.03, h:.30, floors:8,  lit:.25 },
-  { x:.34, w:.07, h:.70, floors:18, lit:.5  },
-  { x:.40, w:.03, h:.45, floors:11, lit:.35 },
-  { x:.43, w:.06, h:.62, floors:15, lit:.55 },
-  { x:.48, w:.02, h:.25, floors:6,  lit:.2  },
-  { x:.50, w:.05, h:.80, floors:20, lit:.6  },
-  { x:.55, w:.03, h:.55, floors:13, lit:.4  },
-  { x:.57, w:.04, h:.40, floors:10, lit:.3  },
-  { x:.61, w:.06, h:.58, floors:14, lit:.45 },
-  { x:.66, w:.03, h:.32, floors:8,  lit:.25 },
-  { x:.69, w:.04, h:.48, floors:12, lit:.4  },
-  { x:.73, w:.02, h:.20, floors:5,  lit:.15 },
-  { x:.75, w:.05, h:.60, floors:15, lit:.5  },
-  { x:.79, w:.03, h:.35, floors:9,  lit:.3  },
-  { x:.82, w:.06, h:.45, floors:11, lit:.35 },
-  { x:.87, w:.03, h:.22, floors:6,  lit:.2  },
-  { x:.90, w:.04, h:.38, floors:10, lit:.28 },
-  { x:.94, w:.02, h:.16, floors:4,  lit:.15 },
-  { x:.96, w:.04, h:.30, floors:7,  lit:.22 },
+const BUILDINGS = [
+  { x: 0.01, w: 0.04, h: 0.28, floors: 7,  lit: 0.3  },
+  { x: 0.05, w: 0.03, h: 0.18, floors: 5,  lit: 0.25 },
+  { x: 0.07, w: 0.05, h: 0.42, floors: 10, lit: 0.35 },
+  { x: 0.12, w: 0.03, h: 0.22, floors: 6,  lit: 0.2  },
+  { x: 0.15, w: 0.06, h: 0.55, floors: 13, lit: 0.4  },
+  { x: 0.20, w: 0.02, h: 0.15, floors: 4,  lit: 0.15 },
+  { x: 0.22, w: 0.04, h: 0.35, floors: 9,  lit: 0.3  },
+  { x: 0.27, w: 0.05, h: 0.50, floors: 12, lit: 0.45 },
+  { x: 0.31, w: 0.03, h: 0.30, floors: 8,  lit: 0.25 },
+  { x: 0.34, w: 0.07, h: 0.70, floors: 18, lit: 0.5  },
+  { x: 0.40, w: 0.03, h: 0.45, floors: 11, lit: 0.35 },
+  { x: 0.43, w: 0.06, h: 0.62, floors: 15, lit: 0.55 },
+  { x: 0.48, w: 0.02, h: 0.25, floors: 6,  lit: 0.2  },
+  { x: 0.50, w: 0.05, h: 0.80, floors: 20, lit: 0.6  },
+  { x: 0.55, w: 0.03, h: 0.55, floors: 13, lit: 0.4  },
+  { x: 0.57, w: 0.04, h: 0.40, floors: 10, lit: 0.3  },
+  { x: 0.61, w: 0.06, h: 0.58, floors: 14, lit: 0.45 },
+  { x: 0.66, w: 0.03, h: 0.32, floors: 8,  lit: 0.25 },
+  { x: 0.69, w: 0.04, h: 0.48, floors: 12, lit: 0.4  },
+  { x: 0.73, w: 0.02, h: 0.20, floors: 5,  lit: 0.15 },
+  { x: 0.75, w: 0.05, h: 0.60, floors: 15, lit: 0.5  },
+  { x: 0.79, w: 0.03, h: 0.35, floors: 9,  lit: 0.3  },
+  { x: 0.82, w: 0.06, h: 0.45, floors: 11, lit: 0.35 },
+  { x: 0.87, w: 0.03, h: 0.22, floors: 6,  lit: 0.2  },
+  { x: 0.90, w: 0.04, h: 0.38, floors: 10, lit: 0.28 },
+  { x: 0.94, w: 0.02, h: 0.16, floors: 4,  lit: 0.15 },
+  { x: 0.96, w: 0.04, h: 0.30, floors: 7,  lit: 0.22 },
 ];
 
-const shafts = [
-  { x1:.34, x2:.28, op:.04 },
-  { x1:.50, x2:.44, op:.055 },
-  { x1:.62, x2:.56, op:.035 },
+const SHAFTS = [
+  { x1: 0.34, x2: 0.28, op: 0.04  },
+  { x1: 0.50, x2: 0.44, op: 0.055 },
+  { x1: 0.62, x2: 0.56, op: 0.035 },
 ];
 
-const particles = Array.from({ length: 60 }, () => ({
-  x: Math.random(),
-  y: Math.random(),
-  r: Math.random() * 1.1 + 0.3,
-  speed: Math.random() * 0.00006 + 0.00002,
-  opacity: Math.random() * 0.15 + 0.05,
-  phase: Math.random() * Math.PI * 2,
+function seededRandom(seed) {
+  let s = seed;
+  return () => {
+    s = (s * 9301 + 49297) % 233280;
+    return s / 233280;
+  };
+}
+
+// Pre-compute window lit states once
+const WIN_STATES = BUILDINGS.map((b, bi) => {
+  const rng = seededRandom(bi * 137 + 42);
+  const cols = Math.max(2, Math.floor((b.w * 1000) / 12));
+  return Array.from({ length: b.floors * cols }, () =>
+    rng() < b.lit ? 1 : 0
+  );
+});
+
+// Particles
+const PARTICLES = Array.from({ length: 80 }, () => ({
+  x:       Math.random(),
+  y:       Math.random(),
+  r:       Math.random() * 1.2 + 0.2,
+  speed:   Math.random() * 0.00008 + 0.00003,
+  opacity: Math.random() * 0.18 + 0.04,
+  phase:   Math.random() * Math.PI * 2,
 }));
 
-// Procedural noise for flickering windows
-const flickerSeed = (a, b, c) => {
-  const v = Math.sin(a * 12.9898 + b * 78.233 + c * 437.11) * 43758.5453;
-  return v - Math.floor(v);
-};
-
-export default function EnhancedSkyline() {
+export default function CanvasSkyline({ style = {}, className = "" }) {
   const canvasRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const rafRef    = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let raf;
-    let t = 0;
-    let isVisible = true;
+    const ctx = canvas.getContext("2d");
 
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      setIsMobile(window.innerWidth < 768);
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
     };
     resize();
-    window.addEventListener('resize', resize);
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas);
+
+    let t = 0;
 
     const draw = () => {
-      if (!isVisible) return;
+      const w = canvas.width;
+      const h = canvas.height;
+      if (!w || !h) { rafRef.current = requestAnimationFrame(draw); return; }
 
-      const W = canvas.width;
-      const H = canvas.height;
-      const groundY = H * 0.72;
+      ctx.clearRect(0, 0, w, h);
 
-      ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = '#080705'; // Deep background
-      ctx.fillRect(0, 0, W, H);
+      // Background
+      ctx.fillStyle = "#080705";
+      ctx.fillRect(0, 0, w, h);
 
-      const checkMobile = W < 768;
+      // Horizon ambient glow
+      const grd = ctx.createLinearGradient(0, h * 0.35, 0, h * 0.68);
+      grd.addColorStop(0,   "rgba(201,130,40,0.0)");
+      grd.addColorStop(0.5, "rgba(201,130,40,0.025)");
+      grd.addColorStop(1,   "rgba(8,7,5,0)");
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, w, h);
 
-      // 1. Light Shafts (V2 Style) - Skip on mobile to save GPU cycles
-      if (!checkMobile) {
-        shafts.forEach((s, i) => {
-          const grad = ctx.createLinearGradient(s.x1 * W, 0, s.x2 * W, H);
-          grad.addColorStop(0, `rgba(201,162,80,${s.op * 1.2})`);
-          grad.addColorStop(0.5, `rgba(201,162,80,${s.op * 0.4})`);
-          grad.addColorStop(1, 'rgba(201,162,80,0)');
-          ctx.save();
-          ctx.strokeStyle = grad;
-          ctx.lineWidth = 50 + i * 10;
-          ctx.globalAlpha = 0.7 + 0.3 * Math.sin(t * 0.5 + i);
-          ctx.beginPath();
-          ctx.moveTo(s.x1 * W, 0);
-          ctx.lineTo(s.x2 * W, H);
-          ctx.stroke();
-          ctx.restore();
-        });
-      }
-
-      // 2. Perspective Grid (V1 Style)
-      ctx.strokeStyle = 'rgba(120,95,55,0.03)';
-      ctx.lineWidth = 0.5;
-      for (let gx = -W * 0.2; gx < W * 1.2; gx += 70) {
+      // Light shafts
+      SHAFTS.forEach((s) => {
+        const grad = ctx.createLinearGradient(s.x1 * w, 0, s.x2 * w, h);
+        grad.addColorStop(0,   `rgba(201,162,80,${s.op})`);
+        grad.addColorStop(0.5, `rgba(201,162,80,${s.op * 0.6})`);
+        grad.addColorStop(1,   "rgba(201,162,80,0)");
+        ctx.save();
+        ctx.strokeStyle  = grad;
+        ctx.lineWidth    = 40;
+        ctx.globalAlpha  = 0.6 + 0.4 * Math.sin(t * 0.4 + s.x1 * 10);
         ctx.beginPath();
-        ctx.moveTo(gx, groundY);
-        ctx.lineTo(gx + (gx - W/2) * 0.5, 0);
+        ctx.moveTo(s.x1 * w, 0);
+        ctx.lineTo(s.x2 * w, h);
         ctx.stroke();
-      }
+        ctx.restore();
+      });
 
-      // 3. Buildings (Halve building render list on mobile)
-      const activeBuildings = checkMobile ? buildings.filter((_, idx) => idx % 2 === 0) : buildings;
+      const groundY = h * 0.68;
 
-      activeBuildings.forEach((b, bi) => {
-        const bx = b.x * W;
-        const bw = Math.max(b.w * W, 20);
-        const bh = b.h * H * 0.6;
-        const by = groundY - bh;
+      // Buildings (sorted back-to-front by height)
+      const sorted = [...BUILDINGS]
+        .map((b, i) => ({ ...b, _i: i }))
+        .sort((a, b) => a.h - b.h);
 
-        // Building Body Gradient
-        const bodyGrad = ctx.createLinearGradient(bx, by, bx, by + bh);
-        bodyGrad.addColorStop(0, `rgba(45,38,28, ${0.15 + b.h * 0.1})`);
-        bodyGrad.addColorStop(1, 'rgba(15,12,8, 0.6)');
-        ctx.fillStyle = bodyGrad;
+      sorted.forEach((b) => {
+        const bi  = b._i;
+        const bx  = b.x * w;
+        const bw  = Math.max(b.w * w, 18);
+        const bh  = b.h * h * 0.65;
+        const by  = groundY - bh;
+        const dep = b.h;
+
+        // Body
+        ctx.fillStyle = `rgba(40,32,20,${0.12 + dep * 0.08})`;
         ctx.fillRect(bx, by, bw, bh);
 
-        // Edge Highlight (V2 Top Glow)
-        ctx.fillStyle = 'rgba(201,162,80,0.06)';
-        ctx.fillRect(bx, by, bw, 1);
+        // Edge highlight
+        ctx.strokeStyle = `rgba(120,95,55,${0.04 + dep * 0.06})`;
+        ctx.lineWidth   = 0.5;
+        ctx.strokeRect(bx, by, bw, bh);
 
-        // Spire & Blinking Red Antenna (V1 Style)
-        if (b.h > 0.45) {
-          const spireH = bh * 0.1;
-          const spireX = bx + bw / 2;
-          ctx.strokeStyle = 'rgba(180,145,70,0.2)';
+        // Spire on tall buildings
+        if (b.h > 0.55) {
+          const spireH = bh * 0.08;
+          const sx     = bx + bw / 2;
+          ctx.strokeStyle = `rgba(180,145,70,${0.25 + dep * 0.15})`;
+          ctx.lineWidth   = 1;
           ctx.beginPath();
-          ctx.moveTo(spireX, by);
-          ctx.lineTo(spireX, by - spireH);
+          ctx.moveTo(sx, by);
+          ctx.lineTo(sx, by - spireH);
           ctx.stroke();
-          
-          const blink = (Math.sin(t * 2.5 + bi) > 0.8) ? 0.7 : 0.1;
-          ctx.fillStyle = `rgba(255,80,80,${blink})`;
+          // Blinking light
+          const bp = (t * 0.8 + bi * 1.7) % (Math.PI * 2);
+          const ba = bp < Math.PI ? 0 : (Math.sin(bp) * 0.5 + 0.5) * 0.6;
+          ctx.fillStyle = `rgba(255,80,80,${ba})`;
           ctx.beginPath();
-          ctx.arc(spireX, by - spireH - 2, 1.2, 0, Math.PI * 2);
+          ctx.arc(sx, by - spireH - 2, 1.5, 0, Math.PI * 2);
           ctx.fill();
         }
 
-        // 4. Pulsing Windows (V2 Flicker Math) - reduce window resolution on mobile
-        const rows = checkMobile ? Math.ceil(b.floors / 2) : b.floors;
-        const cols = Math.max(2, Math.floor(bw / (checkMobile ? 18 : 12)));
-        const winW = (bw * 0.7) / cols;
-        const winH = (bh * 0.8) / rows;
-        const padX = (bw - (cols * winW)) / 2;
+        // Windows
+        const cols = Math.max(2, Math.floor(bw / 9));
+        const rows = b.floors;
+        const winW = Math.max(2, (bw - 6) / cols - 2);
+        const winH = Math.max(2, (bh * 0.9) / rows - 3);
+        const padX = (bw - cols * (winW + 2) + 2) / 2;
+        const ws   = WIN_STATES[bi];
 
-        for (let r = 0; r < rows; r++) {
-          for (let c = 0; c < cols; c++) {
-            const seed = flickerSeed(bi, r, c);
-            // Threshold for window being "on"
-            if (seed < b.lit) {
-              const pulse = 0.4 + 0.6 * Math.sin(t * 1.5 + seed * 10);
-              const wx = bx + padX + c * winW + winW * 0.2;
-              const wy = by + (bh * 0.1) + r * winH + winH * 0.2;
-              
-              ctx.fillStyle = `rgba(201,162,80,${0.1 + pulse * 0.3})`;
-              ctx.fillRect(wx, wy, winW * 0.6, winH * 0.6);
-            }
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const idx = row * cols + col;
+            if (!ws[idx % ws.length]) continue;
+            const wx = bx + padX + col * (winW + 2);
+            const wy = by + bh * 0.05 + row * (winH + 3);
+            const wm = 0.3 + ((idx * 17) % 100) / 250;
+            ctx.fillStyle = `rgba(255,${Math.floor(190 + wm * 40)},${Math.floor(80 + wm * 40)},${0.12 + wm * 0.2})`;
+            ctx.fillRect(wx, wy, winW, winH);
           }
         }
       });
 
-      // 5. Particles (Ambient Dust) - limit to 15 on mobile
-      const activeParticles = checkMobile ? particles.slice(0, 15) : particles;
-      activeParticles.forEach(p => {
-        const px = ((p.x + t * p.speed) % 1) * W;
-        const py = ((p.y - t * p.speed + 1) % 1) * H;
-        const pulse = 0.5 + 0.5 * Math.sin(t * 1.2 + p.phase);
+      // Ground glow
+      const gg = ctx.createLinearGradient(0, groundY - 20, 0, groundY + 40);
+      gg.addColorStop(0,   "rgba(201,130,50,0.0)");
+      gg.addColorStop(0.4, "rgba(201,130,50,0.04)");
+      gg.addColorStop(1,   "rgba(8,7,5,0)");
+      ctx.fillStyle = gg;
+      ctx.fillRect(0, groundY - 20, w, 60);
+
+      // Ground line
+      ctx.strokeStyle = "rgba(180,140,70,0.08)";
+      ctx.lineWidth   = 0.5;
+      ctx.beginPath();
+      ctx.moveTo(0, groundY);
+      ctx.lineTo(w, groundY);
+      ctx.stroke();
+
+      // Isometric grid lines
+      ctx.strokeStyle = "rgba(120,95,55,0.025)";
+      ctx.lineWidth   = 0.5;
+      for (let gx = 0; gx < w; gx += 60) {
+        ctx.beginPath();
+        ctx.moveTo(gx, groundY);
+        ctx.lineTo(gx + w * 0.2, 0);
+        ctx.stroke();
+      }
+
+      // Particles
+      PARTICLES.forEach((p) => {
+        const px    = ((p.x + t * p.speed * 0.5) % 1) * w;
+        let   py    = ((p.y - t * p.speed) % 1) * h;
+        if (py < 0) py += h;
+        const pulse = 0.5 + 0.5 * Math.sin(t * 1.5 + p.phase);
         ctx.fillStyle = `rgba(201,162,80,${p.opacity * pulse})`;
         ctx.beginPath();
         ctx.arc(px, py, p.r, 0, Math.PI * 2);
         ctx.fill();
       });
 
-      // 6. Final Atmospheric Haze (V2 Internal)
-      const haze = ctx.createLinearGradient(0, groundY - 100, 0, H);
-      haze.addColorStop(0, 'rgba(8,7,5,0)');
-      haze.addColorStop(0.5, 'rgba(25,20,15,0.4)');
-      haze.addColorStop(1, '#080705');
-      ctx.fillStyle = haze;
-      ctx.fillRect(0, groundY - 100, W, H - (groundY - 100));
-
       t += 0.016;
-      raf = requestAnimationFrame(draw);
+      rafRef.current = requestAnimationFrame(draw);
     };
 
-    // Use Intersection Observer to only animate when the canvas is inside the viewport
-    const observer = new IntersectionObserver(([entry]) => {
-      isVisible = entry.isIntersecting;
-      if (isVisible) {
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(draw);
-      }
-    }, { threshold: 0.01 });
+    rafRef.current = requestAnimationFrame(draw);
 
-    observer.observe(canvas);
-
-    draw();
     return () => {
-      window.removeEventListener('resize', resize);
-      cancelAnimationFrame(raf);
-      observer.disconnect();
+      cancelAnimationFrame(rafRef.current);
+      ro.disconnect();
     };
   }, []);
 
   return (
-    <div style={styles.container}>
-      <canvas ref={canvasRef} style={styles.canvas} />
-      
-      {/* SVG Grain Overlay from V1 - Disabled on mobile to prevent massive paint re-calculations */}
-      {!isMobile && <div style={styles.grain} />}
-      
-      {/* Vignette Overlay from V1 */}
-      <div style={styles.vignette} />
-
-      {/* Your Version 2 Content/UI goes here */}
-      <div style={styles.content}>
-        {/* Place children or boilerplate text here */}
-      </div>
-    </div>
+    <canvas
+      ref={canvasRef}
+      className={className}
+      style={{
+        display: "block",
+        width: "100%",
+        height: "100%",
+        ...style,
+      }}
+    />
   );
 }
-
-const styles = {
-  container: {
-    position: 'fixed',
-    inset: 0,
-    backgroundColor: '#080705',
-    overflow: 'hidden',
-    zIndex: 0,
-  },
-  canvas: {
-    display: 'block',
-    width: '100%',
-    height: '100%',
-  },
-  grain: {
-    position: 'absolute',
-    inset: 0,
-    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
-    opacity: 0.04,
-    pointerEvents: 'none',
-  },
-  vignette: {
-    position: 'absolute',
-    inset: 0,
-    background: 'radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.6) 100%)',
-    pointerEvents: 'none',
-  },
-  content: {
-    position: 'relative',
-    zIndex: 10,
-    width: '100%',
-    height: '100%',
-    pointerEvents: 'none', // Allows clicking through to canvas if needed
-  }
-};
