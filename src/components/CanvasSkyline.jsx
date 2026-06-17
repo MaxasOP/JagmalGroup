@@ -64,14 +64,14 @@ const PARTICLES = Array.from({ length: 80 }, () => ({
   phase:   Math.random() * Math.PI * 2,
 }));
 
-// Meteors (2x count, 50% slower, 40% larger)
+// Meteors (2x count, 50% slower, 50% larger than last size, initialized spread out for continuous rain)
 const METEORS = Array.from({ length: 16 }, () => ({
-  x:         Math.random() * 1.6 - 0.2,
-  y:         Math.random() * -0.6,
-  len:       (Math.random() * 20 + 10) * 1.4,
+  x:         Math.random() * 1.5 - 0.1,
+  y:         Math.random() * 0.9 - 0.15, // spread across sky height initially
+  len:       (Math.random() * 20 + 10) * 2.1,
   speed:     (Math.random() * 0.002 + 0.001) * 0.5,
   opacity:   Math.random() * 0.25 + 0.1,
-  thickness: (Math.random() * 0.6 + 0.4) * 1.4,
+  thickness: (Math.random() * 0.6 + 0.4) * 2.1,
 }));
 
 export default function CanvasSkyline({ style = {}, className = "" }) {
@@ -166,12 +166,12 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
 
         // Reset once it moves too far down or left
         if (m.y > 0.75 || m.x < -0.1) {
-          m.x = Math.random() * 1.6;
-          m.y = -0.1 - Math.random() * 0.4;
+          m.x = Math.random() * 1.3 + 0.2; // spawn further right since they fall left
+          m.y = -0.05 - Math.random() * 0.05; // spawn just above the top edge for instant entry
           m.speed = (Math.random() * 0.002 + 0.001) * 0.5;
           m.opacity = Math.random() * 0.25 + 0.1;
-          m.len = (Math.random() * 20 + 10) * 1.4;
-          m.thickness = (Math.random() * 0.6 + 0.4) * 1.4;
+          m.len = (Math.random() * 20 + 10) * 2.1;
+          m.thickness = (Math.random() * 0.6 + 0.4) * 2.1;
         }
 
         const x1 = m.x * w;
