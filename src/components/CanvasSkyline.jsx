@@ -64,6 +64,16 @@ const PARTICLES = Array.from({ length: 80 }, () => ({
   phase:   Math.random() * Math.PI * 2,
 }));
 
+// Meteors (fewer, smaller/lighter for premium look)
+const METEORS = Array.from({ length: 8 }, () => ({
+  x:         Math.random() * 1.6 - 0.2,
+  y:         Math.random() * -0.6,
+  len:       Math.random() * 20 + 10,
+  speed:     Math.random() * 0.002 + 0.001,
+  opacity:   Math.random() * 0.25 + 0.1,
+  thickness: Math.random() * 0.6 + 0.4,
+}));
+
 export default function CanvasSkyline({ style = {}, className = "" }) {
   const canvasRef = useRef(null);
   const rafRef    = useRef(null);
@@ -90,6 +100,8 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
       const w = canvas.width;
       const h = canvas.height;
       if (!w || !h) { rafRef.current = requestAnimationFrame(draw); return; }
+
+      const groundY = h * 0.78;
 
       ctx.clearRect(0, 0, w, h);
 
@@ -122,9 +134,63 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
         ctx.restore();
       });
 
-      const groundY = h * 0.78;
-
+      // Update & Draw Meteors (drawn behind buildings for realistic occlusion)
       const isMobileLayout = w < 768;
+      // Render fewer/no meteors on mobile if desired, or keep them lightweight
+      const activeMeteors = isMobileLayout ? METEORS.slice(0, 4) : METEORS;
+
+      // Define a clipping path to restrict meteors only to the sky area (above the building silhouettes)
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(w, 0);
+      ctx.lineTo(w, groundY);
+
+      // Sort buildings from right to left to trace contour
+      const contour = [...BUILDINGS].sort((a, b) => b.x - a.x);
+      contour.forEach((b) => {
+        const bx = b.x * w;
+        const bw = Math.max(b.w * w, 18);
+        const bh = b.h * h * (isMobileLayout ? 0.52 : 0.75);
+        const by = groundY - bh;
+        ctx.lineTo(bx + bw, by);
+        ctx.lineTo(bx, by);
+      });
+      ctx.lineTo(0, groundY);
+      ctx.closePath();
+      ctx.clip();
+
+      activeMeteors.forEach((m) => {
+        m.x -= m.speed * 1.2;
+        m.y += m.speed;
+
+        // Reset once it moves too far down or left
+        if (m.y > 0.75 || m.x < -0.1) {
+          m.x = Math.random() * 1.6;
+          m.y = -0.1 - Math.random() * 0.4;
+          m.speed = Math.random() * 0.002 + 0.001;
+          m.opacity = Math.random() * 0.25 + 0.1;
+          m.len = Math.random() * 20 + 10;
+          m.thickness = Math.random() * 0.6 + 0.4;
+        }
+
+        const x1 = m.x * w;
+        const y1 = m.y * h;
+        const x2 = x1 + 0.77 * m.len;
+        const y2 = y1 - 0.64 * m.len;
+
+        const grad = ctx.createLinearGradient(x1, y1, x2, y2);
+        grad.addColorStop(0, `rgba(255, 255, 255, ${m.opacity})`);
+        grad.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = m.thickness;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+      });
+      ctx.restore();
 
       // Buildings (sorted back-to-front by height)
       const sorted = [...BUILDINGS]
