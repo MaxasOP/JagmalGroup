@@ -8,6 +8,8 @@ import Footer from '../components/Footer';
 import CanvasSkyline from '../components/CanvasSkyline';
 import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
+import { ShinyText } from '../components/ShinyText';
+
 const Home = () => {
   useDocumentMetadata({
     title: 'Jagmal Group - Hospitality, Construction & Logistics',
@@ -64,7 +66,7 @@ const Home = () => {
             >
               Building what
               <br />
-              <span className="italic text-[#bda35e]">endures.</span>
+              <ShinyText className="italic">endures.</ShinyText>
             </h1>
 
             <p

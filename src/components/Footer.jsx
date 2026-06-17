@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
+import { ShinyText } from './ShinyText';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -39,8 +41,8 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Quick Links
+            <h3 className="text-lg font-semibold mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <ShinyText className="font-semibold text-lg">Quick Links</ShinyText>
             </h3>
             <ul className="space-y-3">
               <li>
@@ -73,8 +75,8 @@ const Footer = () => {
 
           {/* Our Businesses */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Our Businesses
+            <h3 className="text-lg font-semibold mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <ShinyText className="font-semibold text-lg">Our Businesses</ShinyText>
             </h3>
             <ul className="space-y-3">
               {businessLinks.map((link) => (
@@ -89,8 +91,8 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Contact Us
+            <h3 className="text-lg font-semibold mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <ShinyText className="font-semibold text-lg">Contact Us</ShinyText>
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start">

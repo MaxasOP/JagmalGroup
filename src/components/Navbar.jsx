@@ -43,11 +43,10 @@ export const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrolled
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
             ? 'backdrop-blur-xl bg-slate-900/80 shadow-lg border-b border-slate-800'
             : 'bg-transparent'
-        }`}
+          }`}
         data-testid="main-navbar"
       >
         <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 md:px-8">
@@ -67,9 +66,8 @@ export const Navbar = () => {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`text-base font-medium transition-colors duration-300 hover:text-amber-500 ${
-                    pathname === link.path ? 'text-amber-500' : 'text-slate-200'
-                  }`}
+                  className={`text-base font-medium transition-colors duration-300 hover:text-amber-500 ${pathname === link.path ? 'text-amber-500' : 'text-slate-200'
+                    }`}
                 >
                   {link.name}
                 </Link>
@@ -85,9 +83,8 @@ export const Navbar = () => {
                     <Link
                       key={link.path}
                       href={link.path}
-                      className={`block rounded-md px-3 py-2 text-sm transition-colors duration-200 hover:bg-slate-800 hover:text-amber-500 ${
-                        pathname === link.path ? 'text-amber-500' : 'text-slate-300'
-                      }`}
+                      className={`block rounded-md px-3 py-2 text-sm transition-colors duration-200 hover:bg-slate-800 hover:text-amber-500 ${pathname === link.path ? 'text-amber-500' : 'text-slate-300'
+                        }`}
                     >
                       {link.name}
                     </Link>
@@ -99,9 +96,8 @@ export const Navbar = () => {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`text-base font-medium transition-colors duration-300 hover:text-amber-500 ${
-                    pathname === link.path ? 'text-amber-500' : 'text-slate-200'
-                  }`}
+                  className={`text-base font-medium transition-colors duration-300 hover:text-amber-500 ${pathname === link.path ? 'text-amber-500' : 'text-slate-200'
+                    }`}
                 >
                   {link.name}
                 </Link>
@@ -116,11 +112,11 @@ export const Navbar = () => {
                 data-testid="mobile-menu-trigger"
               >
                 <div className="flex flex-col gap-1.5 w-6 items-end justify-center">
-                  <span className={`h-0.5 bg-current transition-all duration-300 origin-center ${
-                    mobileOpen ? 'rotate-45 translate-y-[4px] w-6' : 'w-6 group-hover:w-4'
+                  <span className={`h-0.5 bg-current transition-all duration-300 origin-right ${
+                    mobileOpen ? 'rotate-45 translate-y-[4px] w-6 origin-center' : 'w-6 group-hover:w-4 animate-pulse-bar-1'
                   }`} />
-                  <span className={`h-0.5 bg-current transition-all duration-300 origin-center ${
-                    mobileOpen ? '-rotate-45 -translate-y-[4px] w-6' : 'w-4 group-hover:w-6'
+                  <span className={`h-0.5 bg-current transition-all duration-300 origin-right ${
+                    mobileOpen ? '-rotate-45 -translate-y-[4px] w-6 origin-center' : 'w-4 group-hover:w-6 animate-pulse-bar-2'
                   }`} />
                 </div>
               </button>
@@ -131,14 +127,32 @@ export const Navbar = () => {
 
       {/* Fullscreen Overlay Menu (x.ai inspired) */}
       <div
-        className={`fixed inset-0 z-40 bg-slate-950/98 backdrop-blur-2xl transition-all duration-500 ease-out md:hidden flex flex-col overflow-y-auto ${
-          mobileOpen 
-            ? 'opacity-100 pointer-events-auto translate-y-0' 
+        className={`fixed inset-0 z-40 bg-slate-950/98 backdrop-blur-2xl transition-all duration-500 ease-out md:hidden flex flex-col overflow-y-auto ${mobileOpen
+            ? 'opacity-100 pointer-events-auto translate-y-0'
             : 'opacity-0 pointer-events-none -translate-y-4'
-        }`}
+          }`}
       >
         {/* Style block for animations */}
-        <style dangerouslySetInnerHTML={{__html: `
+        <style dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes barPulse {
+            0%, 100% {
+              transform: scaleX(1);
+              opacity: 0.7;
+            }
+            50% {
+              transform: scaleX(0.8);
+              opacity: 1;
+              color: #f59e0b;
+            }
+          }
+          .animate-pulse-bar-1 {
+            animation: barPulse 2.4s infinite ease-in-out;
+          }
+          .animate-pulse-bar-2 {
+            animation: barPulse 2.4s infinite ease-in-out;
+            animation-delay: 0.6s;
+          }
           @keyframes slideUpFade {
             from {
               opacity: 0;
@@ -161,7 +175,7 @@ export const Navbar = () => {
               { name: 'Home', path: '/' },
               { name: 'About Us', path: '/about' },
             ].map((link, idx) => (
-              <div 
+              <div
                 key={link.path}
                 className="animate-menu-item"
                 style={{ animationDelay: `${idx * 70}ms`, animationPlayState: mobileOpen ? 'running' : 'paused' }}
@@ -180,7 +194,7 @@ export const Navbar = () => {
             ))}
 
             {/* Collapsible Businesses */}
-            <div 
+            <div
               className="animate-menu-item"
               style={{ animationDelay: '140ms', animationPlayState: mobileOpen ? 'running' : 'paused' }}
             >
@@ -193,7 +207,7 @@ export const Navbar = () => {
                 </span>
                 <ChevronDown className={`h-5 w-5 text-slate-400 transition-transform duration-300 ${businessesOpen ? 'rotate-180 text-amber-500' : ''}`} />
               </button>
-              
+
               <div className={`overflow-hidden transition-all duration-500 ${businessesOpen ? 'max-h-64 mt-3 opacity-100' : 'max-h-0 opacity-0'}`}>
                 <div className="ml-4 border-l border-slate-800 pl-4 space-y-3">
                   {businessLinks.map((link) => (
@@ -219,7 +233,7 @@ export const Navbar = () => {
               { name: 'Philanthropy', path: '/philanthropy' },
               { name: 'Contact', path: '/contact' },
             ].map((link, idx) => (
-              <div 
+              <div
                 key={link.path}
                 className="animate-menu-item"
                 style={{ animationDelay: `${(idx + 3) * 70}ms`, animationPlayState: mobileOpen ? 'running' : 'paused' }}
@@ -240,21 +254,21 @@ export const Navbar = () => {
         </div>
 
         {/* Footer section of overlay menu */}
-        <div 
+        <div
           className="border-t border-slate-900 bg-slate-950/60 p-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left mt-auto animate-menu-item"
           style={{ animationDelay: '420ms', animationPlayState: mobileOpen ? 'running' : 'paused' }}
         >
           <div>
             <div className="text-[1.1rem] font-bold tracking-tight mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>
-              <span className="text-white">JAGMAL</span>
-              <span className="text-amber-500"> GROUP</span>
+              <span className="text-white">Building</span>
+              <span className="text-amber-500"> Tomorrow</span>
             </div>
             <p className="text-xs text-slate-500">Excellence across industries.</p>
           </div>
           <div className="flex gap-4 text-xs text-slate-400">
             <a href="mailto:info@jagmalgroup.com" className="hover:text-amber-500 transition-colors">info@jagmalgroup.com</a>
             <span>•</span>
-            <span className="text-slate-500">Est. 2014</span>
+            <span className="text-slate-500">Est. Long Ago</span>
           </div>
         </div>
       </div>
