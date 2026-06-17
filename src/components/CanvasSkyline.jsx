@@ -64,14 +64,14 @@ const PARTICLES = Array.from({ length: 80 }, () => ({
   phase:   Math.random() * Math.PI * 2,
 }));
 
-// Meteors (fewer, smaller/lighter for premium look)
-const METEORS = Array.from({ length: 8 }, () => ({
+// Meteors (2x count, 50% slower, 40% larger)
+const METEORS = Array.from({ length: 16 }, () => ({
   x:         Math.random() * 1.6 - 0.2,
   y:         Math.random() * -0.6,
-  len:       Math.random() * 20 + 10,
-  speed:     Math.random() * 0.002 + 0.001,
+  len:       (Math.random() * 20 + 10) * 1.4,
+  speed:     (Math.random() * 0.002 + 0.001) * 0.5,
   opacity:   Math.random() * 0.25 + 0.1,
-  thickness: Math.random() * 0.6 + 0.4,
+  thickness: (Math.random() * 0.6 + 0.4) * 1.4,
 }));
 
 export default function CanvasSkyline({ style = {}, className = "" }) {
@@ -137,7 +137,7 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
       // Update & Draw Meteors (drawn behind buildings for realistic occlusion)
       const isMobileLayout = w < 768;
       // Render fewer/no meteors on mobile if desired, or keep them lightweight
-      const activeMeteors = isMobileLayout ? METEORS.slice(0, 4) : METEORS;
+      const activeMeteors = isMobileLayout ? METEORS.slice(0, 8) : METEORS;
 
       // Define a clipping path to restrict meteors only to the sky area (above the building silhouettes)
       ctx.save();
@@ -168,10 +168,10 @@ export default function CanvasSkyline({ style = {}, className = "" }) {
         if (m.y > 0.75 || m.x < -0.1) {
           m.x = Math.random() * 1.6;
           m.y = -0.1 - Math.random() * 0.4;
-          m.speed = Math.random() * 0.002 + 0.001;
+          m.speed = (Math.random() * 0.002 + 0.001) * 0.5;
           m.opacity = Math.random() * 0.25 + 0.1;
-          m.len = Math.random() * 20 + 10;
-          m.thickness = Math.random() * 0.6 + 0.4;
+          m.len = (Math.random() * 20 + 10) * 1.4;
+          m.thickness = (Math.random() * 0.6 + 0.4) * 1.4;
         }
 
         const x1 = m.x * w;
