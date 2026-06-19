@@ -260,8 +260,8 @@ export const Navbar = () => {
         >
           <div>
             <div className="text-[1.1rem] font-bold tracking-tight mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>
-              <span className="text-white">Building</span>
-              <span className="text-amber-500"> Tomorrow</span>
+              <span className="text-white">Think</span>
+              <span className="text-amber-500"> Different</span>
             </div>
             <p className="text-xs text-slate-500">Excellence across industries.</p>
           </div>

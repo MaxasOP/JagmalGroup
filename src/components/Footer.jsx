@@ -20,8 +20,8 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <Link href="/" className="text-2xl font-bold tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-              <span className="text-slate-100">JAGMAL</span>
-              <span className="text-amber-500"> GROUP</span>
+              <span className="text-slate-100">Building</span>
+              <span className="text-amber-500"> Tomorrow</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed">
               A legacy of excellence spanning multiple industries including hospitality, logistics, and construction sectors.
