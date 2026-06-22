@@ -27,13 +27,13 @@ const Footer = () => {
               A legacy of excellence spanning multiple industries including hospitality, logistics, and construction sectors.
             </p>
             <div className="flex space-x-4 mt-6">
-              <a href="#" className="p-2 rounded-full bg-slate-800 hover:bg-amber-500 transition-colors duration-300">
+              <a href="https://www.linkedin.com/in/shivam-chauhan-880a98198?utm_source=share_via&utm_content=profile&utm_medium=member_ios" className="p-2 rounded-full bg-slate-800 hover:bg-amber-500 transition-colors duration-300">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="p-2 rounded-full bg-slate-800 hover:bg-amber-500 transition-colors duration-300">
+              <a href="https://www.instagram.com/shivaaaamchauhan?igsh=MTBubnE1NnYyaHJ0Zg==" className="p-2 rounded-full bg-slate-800 hover:bg-amber-500 transition-colors duration-300">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="p-2 rounded-full bg-slate-800 hover:bg-amber-500 transition-colors duration-300">
+              <a href="https://www.linkedin.com/in/shivam-chauhan-880a98198?utm_source=share_via&utm_content=profile&utm_medium=member_ios" className="p-2 rounded-full bg-slate-800 hover:bg-amber-500 transition-colors duration-300">
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
@@ -46,11 +46,6 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/" className="hover:text-amber-500 transition-colors duration-300">
-                  Home
-                </Link>
-              </li>
-              <li>
                 <Link href="/about" className="hover:text-amber-500 transition-colors duration-300">
                   About Us
                 </Link>
@@ -61,13 +56,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-amber-500 transition-colors duration-300">
-                  Contact
+                <Link href="/philanthropy" className="hover:text-amber-500 transition-colors duration-300">
+                  Philanthropy
                 </Link>
               </li>
               <li>
-                <Link href="/philanthropy" className="hover:text-amber-500 transition-colors duration-300">
-                  Philanthropy
+                <Link href="/contact" className="hover:text-amber-500 transition-colors duration-300">
+                  Contact
                 </Link>
               </li>
             </ul>

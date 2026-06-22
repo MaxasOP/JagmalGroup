@@ -1,8 +1,8 @@
 import Hotels from '../../pages-components/Hotels';
 
 export const metadata = {
-  title: 'Hotels & Heritage Estates',
-  description: 'Luxury hospitality destinations, heritage properties, and premium accommodations managed by Jagmal Group.',
+  title: 'Hotels & Estates',
+  description: 'Luxury hospitality destinations and premium accommodations managed by Jagmal Group.',
   alternates: {
     canonical: 'https://www.jagmal.com/hotels',
   },

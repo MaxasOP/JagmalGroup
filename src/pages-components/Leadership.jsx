@@ -1,6 +1,7 @@
 import { Card } from '../components/ui/card';
 import { Linkedin, Mail, Instagram } from 'lucide-react';
 import Footer from '../components/Footer';
+import { ShinyText } from '../components/ShinyText';
 import useDocumentMetadata from '../hooks/useDocumentMetadata';
 
 const Leadership = () => {
@@ -65,7 +66,7 @@ const Leadership = () => {
                   Shivam Chauhan
                 </h2>
                 <div className="inline-block px-6 py-2 rounded-full bg-[#d4af37]/10 text-[#d4af37] text-sm font-medium mb-8">
-                  Chairman & MD
+                  <ShinyText>Chairman &amp; MD</ShinyText>
                 </div>
                 <p
                   className="text-lg text-slate-300 leading-relaxed max-w-2xl mb-8"
